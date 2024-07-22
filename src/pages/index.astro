@@ -1,34 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
+import GenreGrid from '../components/GenreGrid.astro';
 ---
 
 <Layout title="Logickal Electronic Music.">
-	<main>
+	<main class="m-auto w-3/4">
+		<div class="p-2">
+			<p>Header menu placeholder</p>
 
-		<h1>Logickal</h1>
-		<h2>Eclectic Electricism</h2>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul>
+		</div>
+		<div class="page-header m-5 p-5">
+			<h1 class="text-3xl">Logickal</h1>
+			<h2 class="text-2xl">Eclectic Electricism</h2>	
+		</div>
+		<div class="m-auto p-5 w-1/2 font-mono text-sm text-justify">
+			<p><span class="font-bold text-base">File under:</span> Electronic Music, Ambient, Techno, Industrial, IDM, Experimental Electronics, Drone, Computer Music, DAWless Performance, Live Coding</p>
+		</div>
+		<div class="main-section my-5">
+			<GenreGrid />
+
+		</div>
+
+		
 	</main>
 </Layout>
