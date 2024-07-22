@@ -1,12 +1,9 @@
 ---
 
-const { genre, image } = props;
+const { genre, image, color } = Astro.props;
 
 ---
 
-<li class="genre-card w-1/4">
-<div>
-   <h3>{genre}</h3>
+<div class={`m-2 p-3 ${color}`}>
+    <h3 class="text-lg font-bold">{genre}</h3>
 </div>
-
-</li>

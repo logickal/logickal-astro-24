@@ -1,9 +1,11 @@
 ---
+import GenreCard from "./GenreCard.astro"
+
 ---
 
-<div class="genre-grid grid grid-cols-4 grid-rows-1 gap-3 m-auto">
-<div>1</div>
-<div>2</div>
-<div>3</div>
-<div>4</div>
+<div class="genre-grid grid grid-cols-4 grid-rows-1 gap-3 m-auto h-3/4">
+<GenreCard genre="Zero Gravity" image="ambient.jpg" color="bg-blue-500"/>
+<GenreCard genre="Rhythmic Structures" image="indtech.jpg" color="bg-red-800" />
+<GenreCard genre="Orbital Mechanics" image="orbitech.jpg" color="bg-yellow-500" />
+<GenreCard genre="Endless Ascents" image="drone.jpg" color="bg-green-500" />
 </div>
