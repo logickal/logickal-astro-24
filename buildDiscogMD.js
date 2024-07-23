@@ -8,7 +8,7 @@ const albums = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'src/as
 albums.forEach((album, index) => {
     // Create the Markdown content.  Replace this with real stuff later.
     const markdownContent = `---
-    let title = ${album.title.replace(/"/g, '\\"')}
+    title: ${album.title.replace(/"/g, '\\"')}
     date: ${album.raw.current.release_date}
     tags: ${album.tags.map(tag => `${tag.name}`).join(', ')}
     id: ${album.raw.current.id}
@@ -18,8 +18,7 @@ albums.forEach((album, index) => {
     appleMusicUrl:
     ---
 
-
-
+    
     
     ### Credits
     ${album.raw.current.credits}
