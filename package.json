@@ -14,15 +14,16 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.12.2",
     "axios": "^1.7.2",
-    "bandcamp-scraper": "^1.5.0",
-    "cheerio": "^1.0.0-rc.12",
     "date-fns": "^3.6.0",
-    "papaparse": "^5.4.1",
-    "puppeteer": "^22.13.1",
     "sharp": "^0.33.4",
     "tailwindcss": "^3.4.6"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13"
+    "@tailwindcss/typography": "^0.5.13",
+    "xls-parser": "^3.1.0",
+    "papaparse": "^5.4.1",
+    "puppeteer": "^22.13.1",
+    "bandcamp-scraper": "^1.5.0",
+    "cheerio": "^1.0.0-rc.12"
   }
 }
