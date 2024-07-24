@@ -1,41 +1,58 @@
 import fs from 'fs';
 import path from 'path';
+import Papa from 'papaparse';
+import { parse } from 'date-fns';
 
-// Read the JSON file containing the discography
-const albums = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'src/assets/allAlbums.json'), 'utf8'));
+let discog = [];
 
-// Iterate over the retrieved albums
-albums.forEach((album, index) => {
-    // Create the Markdown content.  Replace this with real stuff later.
-    const markdownContent = `---
-    let title = ${album.title.replace(/"/g, '\\"')}
-    date: ${album.raw.current.release_date}
-    tags: ${album.tags.map(tag => `${tag.name}`).join(', ')}
-    id: ${album.raw.current.id}
-    imageUrl: ${album.imageUrl}
-    url: ${album.url}
-    spotifyUrl:
-    appleMusicUrl:
-    ---
+function initialBuild() {
+    const bandcampData = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'src/assets/allAlbums.json'), 'utf8'));
+    const csvData = Papa.parse(fs.readFileSync(path.join(import.meta.dirname, 'src/assets/logickal-discog.csv'), 'utf8'), { header: true });
 
+        // Build the initial discography object from the csv:
+    csvData.data.forEach((album, index) => {
+        let albumInfo = {
+            title: album.title.replace(/"/g, '\\"'),
+            releaseDate: album.releaseDate,
+            slug: album.slug,
+            //tags: album.tags,
+            //id: album.id,
+            imageUrl: album.coverUrl,
+            bandcampUrl: album.bandcampUrl,
+            spotifyUrl: album.spotifyUrl,
+            appleMusicUrl: album.appleMusicUrl,
+            beatportUrl: album.beatportUrl,
+    //      credits: album.credits,
+    //      about: album.about
+            blurb: album.blurb,
+            label: album.label,
+            labelUrl: album.labelUrl
+        };
 
+        discog.push(albumInfo);
+    });
 
-    
-    ### Credits
-    ${album.raw.current.credits}
+    // Grab additional info from the JSON data:
+    discog.forEach((album, index) => {
+        // Find the matching album in the bandcamp data
+        let match = bandcampData.find(bandcampAlbum => bandcampAlbum.title === album.title);
+        // We specifically want to populate the tags, id, credits, and about fields
+        if (match) {
+            album.tags = match.tags;
+            album.id = match.raw.current.id;
+            album.credits = match.raw.current.credits;
+            album.about = match.raw.current.about;
+            // if the album is missing a bandcampURL, grab it from the bandcampData
+            if (!album.bandcampUrl) {
+                album.bandcampUrl = match.url;
+            }
+            //write this entry back to the discog array
+            discog[index] = album;
+        }
 
-    ### Album Info
-    ${album.raw.current.about}
-    
+    });
 
+}
 
-    `;
-
-    // Write the Markdown content to a file
-
-    const markdownFilename = `${album.title.replace(/[^a-z0-9]/gi, '-').toLowerCase()}.mdx`;
-    const outputPath = path.join(import.meta.dirname, 'src/pages/discography/raw', markdownFilename);
-    fs.writeFileSync(outputPath, markdownContent);
-});
-
-console.log('Successfully wrote all album info to Markdown files in src/pages/discog/raw');
+initialBuild();
+fs.writeFileSync(path.join(import.meta.dirname, 'src/assets/slimDiscog.json'), JSON.stringify(discog, null, 2));
