@@ -9,7 +9,7 @@ import puppeteer from 'puppeteer';
 
 let discog = [];
 
-function initialBuild() {
+async function initialBuild() {
     const bandcampData = JSON.parse(fs.readFileSync(path.join(import.meta.dirname, 'src/assets/allAlbums.json'), 'utf8'));
     const csvData = Papa.parse(fs.readFileSync(path.join(import.meta.dirname, 'src/assets/logickal-discog.csv'), 'utf8'), { header: true });
 
@@ -72,6 +72,8 @@ function initialBuild() {
 
     });
 
+    console.log('Data fetch done, returning');
+    return discog;
 
 }
 
@@ -86,7 +88,7 @@ async function retrieveServiceUrl(title, service, slug) {
             break;
         case 'apple':
             searchSite = `music.apple.com`;
-            albumDesignator = 'album';
+            albumDesignator = 'us/album';
             break;
         case 'beatport':
             searchSite =  `beatport.com`;
@@ -109,7 +111,7 @@ async function retrieveServiceUrl(title, service, slug) {
     // console.log(`Title: ${title}`);
     const serviceLink = data.find(link => link.includes(searchSite) && link.includes(albumDesignator));
 
-    // console.log(`ServiceLink: ${serviceLink}`);
+    console.log(`ServiceLink: ${serviceLink}`);
 
    }
    catch (err) {
@@ -129,11 +131,25 @@ async function fetchGoogleResults(searchUrl) {
 
     const results = await page.content();
     const hrefs = await page.$$eval('a', as => as.map(a => a.href));
-    await browser.close();
+    await page.close();
 
     return hrefs;
 }
 
 //retrieveServiceUrl('Speaker Worship', 'apple', 'speaker-worship');
-initialBuild();
-fs.writeFileSync(path.join(import.meta.dirname, 'src/assets/slimDiscog.json'), JSON.stringify(discog, null, 2));
+
+async function main() {
+    try {
+        console.log('Starting data build');
+        let finalDiscog = await initialBuild();
+        console.log('Data build complete');
+    
+        fs.writeFileSync(path.join(import.meta.dirname, 'src/assets/slimDiscog.json'), JSON.stringify(finalDiscog, null, 2));
+        console.log('Data written to file');
+    
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+main();
