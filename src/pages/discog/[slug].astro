@@ -1,0 +1,51 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import BandcampPlayer from "../../components/BandcampPlayer.astro";
+import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
+import { parseJSON } from "date-fns";
+
+export async function getStaticPaths() {
+    console.log(discographyData[0]);
+    const paths = discographyData.map((album) => ({
+        params: { slug: album.slug },
+    }));
+
+    return paths;
+}
+// Add include for discography markdown
+
+const { slug } = Astro.params;
+const album = discographyData.find((album) => album.slug === slug);
+
+if (!album) {
+    Astro.response.status = 404;
+    Astro.response.statusText = 'Not Found';
+}
+
+
+---
+
+<Layout title=`Logickal - ${album.title}` subhead={album.title} >
+
+    {album.blurb && <h3 class="italic">{album.blurb}</h3>}
+
+    <div>
+        {album.catalogNumber && <p>Catalog Number: {album.catalogNumber}</p>}
+        {album.releaseDate && <p>Release Date: {album.releaseDate}</p>}
+        
+    </div>
+
+    <div>
+		<BandcampPlayer id="1957328024" url="https://logickal.bandcamp.com/album/amulet" title="Amulet" />
+    </div>
+
+    <div>
+        {album.credits && <p>Credits: {album.credits}</p>}
+        {album.about && <p>About: {album.about}</p>}
+    </div>
+
+    <div>
+        {JSON.stringify(album)}
+    </div>
+</Layout>
