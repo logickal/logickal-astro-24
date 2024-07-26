@@ -6,7 +6,7 @@ import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
 import { parseJSON } from "date-fns";
 
 export async function getStaticPaths() {
-    console.log(discographyData[0]);
+    //console.log(discographyData[0]);
     const paths = discographyData.map((album) => ({
         params: { slug: album.slug },
     }));

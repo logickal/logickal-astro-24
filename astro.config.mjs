@@ -42,7 +42,6 @@ export default defineConfig({
               for (const key in row) {
                 if (key === 'releaseDate') {
                   row[key] = excelDateToJSDate(row[key]);
-                  console.log(excelDateToJSDate(row[key]));
                 }
               }
             })
