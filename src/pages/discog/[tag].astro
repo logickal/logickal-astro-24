@@ -1,0 +1,46 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
+import { parseJSON } from "date-fns";
+import DiscogCard from "../../components/DiscogCard.astro";
+
+const tagMapping = {
+    amb: 'Ambient',
+    drn: 'Drone',
+    ind: 'Industrial Techno',
+    exp: 'Experimental Electronic'
+}
+
+export async function getStaticPaths() {
+  const uniqueTags = new Set();
+
+  discographyData.forEach(record => {
+    console.log(record);
+    if (record.tags) {
+      const tags = record.tags.split(',');
+      tags.forEach(tag => uniqueTags.add(tag.trim()));
+    }
+  });
+
+  const paths = Array.from(uniqueTags).map(tag => ({
+    params: { tag },
+  }));
+
+  console.log(paths);
+  return paths ;
+}
+
+const releases = discographyData.filter(record => record.tags.includes(Astro.params.tag));
+const tagText = tagMapping[Astro.params.tag] || Astro.params.tag;
+console.log(releases);
+
+---
+
+<Layout title={`Logickal - ${tagText}`} subhead={tagText} >
+
+    <div>
+        {releases.map(release => (
+            <DiscogCard release={release} />
+        ))}
+    </div>
