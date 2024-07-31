@@ -3,10 +3,9 @@ import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import BandcampPlayer from "../../components/BandcampPlayer.astro";
 import discographyData from "../../assets/logickal-discography-FINAL.xlsx";
-import { parseJSON } from "date-fns";
-import { Image } from "astro:assets";
 import ReleaseImage from "../../components/ReleaseImage.astro";
 import DiscogText from "../../components/DiscogText.astro";
+import FormattedDate from "../../components/atoms/FormattedDate.astro";
 
 export async function getStaticPaths() {
   //console.log(discographyData[0]);
@@ -19,29 +18,29 @@ export async function getStaticPaths() {
 // Add include for discography markdown
 
 const { slug } = Astro.params;
-const album = discographyData.find((album) => album.slug === slug);
+const release = discographyData.find((album) => album.slug === slug);
 
-if (!album) {
+if (!release) {
   Astro.response.status = 404;
   Astro.response.statusText = "Not Found";
 }
 
 // Get Cover image
 const images = import.meta.glob("/src/assets/coverImg/*");
-const imageName = album.slug + "-cover.png";
-const imagePath = `/src/assets/coverImg/${album.slug}-cover.jpg`;
+const imageName = release.slug + "-cover.png";
+const imagePath = `/src/assets/coverImg/${release.slug}-cover.jpg`;
 const image = images[imagePath]();
 ---
 
-<Layout title=`Logickal - ${album.title}` subhead={album.title}>
+<Layout title=`Logickal - ${release.title}` subhead={release.title}>
   <div class="main">
 
     <div class="columns-2">
       <div>
         <ReleaseImage image={image} />        
-            {album.blurb && <h3 class="text-lg italic">{album.blurb}</h3>}
-            {album.catalogNumber && <p>Catalog Number: {album.catalogNumber}</p>}
-            {album.releaseDate && <p>Release Date: {album.releaseDate}</p>}    
+            {release.blurb && <h3 class="text-lg italic">{release.blurb}</h3>}
+            {release.catalogNumber && <p>Catalog Number: {release.catalogNumber}</p>}
+            {release.releaseDate && <p>Release Date: <FormattedDate discogDate={release.releaseDate} /></p>}    
       </div>
       <div class="sidebar">
         <div>
@@ -58,8 +57,8 @@ const image = images[imagePath]();
   </div>
 
   <div class="m-5 p-5">
-    <DiscogText header="Credits" text={album.credits} />
-    <DiscogText header="About" text={album.about} />
+    <DiscogText header="Credits" text={release.credits} />
+    <DiscogText header="About" text={release.about} />
 
   </div>
 </Layout>

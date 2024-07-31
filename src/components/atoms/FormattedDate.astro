@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 
 const { discogDate } = Astro.props;
 console.log(discogDate);
-const formattedDate = format(new Date(discogDate), 'MMMM do, yyyy');
+const formattedDate = format(new Date(discogDate), 'yyyy-MM-dd');
 
 ---
 
