@@ -27,17 +27,11 @@ if (!album) {
     Astro.response.statusText = 'Not Found';
 }
 
-// Get Images
+// Get Cover image
 const images = import.meta.glob('/src/assets/coverImg/*');
 const imageName = album.slug + "-cover.png";
 const imagePath = `/src/assets/coverImg/${album.slug}-cover.jpg`;
-
-
-console.log(imagePath);
-console.log(images);
-
 const image = images[imagePath]();
-console.log(image);
 
 ---
 
