@@ -4,13 +4,8 @@ import Layout from "../../layouts/Layout.astro";
 import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
 import { parseJSON } from "date-fns";
 import DiscogCard from "../../components/DiscogCard.astro";
+import tagMapping from "../../assets/lib/tagMapping";
 
-const tagMapping = {
-    amb: 'Ambient',
-    drn: 'Drone',
-    ind: 'Industrial Techno',
-    exp: 'Experimental Electronic'
-}
 
 export async function getStaticPaths() {
   const uniqueTags = new Set();
