@@ -1,10 +1,10 @@
 
 const tagMapping = {
-    amb: 'Ambient',
-    drn: 'Drone',
-    ind: 'Industrial Techno',
-    exp: 'Experimental Electronic',
-    all: 'All Releases',
+    amb: 'amb',
+    drn: 'drn',
+    ind: 'indtec',
+    exp: 'expelec',
+    all: 'all',
 }
 
 export default tagMapping;

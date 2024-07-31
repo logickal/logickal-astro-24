@@ -15,7 +15,13 @@ const { genre, image, color, aspect } = Astro.props;
 const images = import.meta.glob("../assets/imgBg/*");
 let classes = null;
 
+// Set the text and URL for the genre card.
+// The 'all' genre card is a special case and should link to the discography page.
 let genreText = tagMapping[genre] || genre;
+let genreUrl = '/discog';
+if (genre != "all") {
+    genreUrl = `/discog/${genre}`;
+}
 
 if (aspect == "portrait") {
     classes = `m-2 p-3 relative flex-col justify-between h-fit`;
@@ -27,8 +33,10 @@ if (aspect == "portrait") {
 ---
 
 <div class={ classes }>
+    <a href={ genreUrl }>
     <Image src={images[image]() as Promise<{ default: ImageMetadata; }>} alt={genre} class="object-cover" />
     <div class={`absolute inset-x-0 bottom-0 px-2 mx-1 py-3 bg-black bg-opacity-50`}> 
         <h3 class="text-lg font-extralight">{genreText}</h3>
     </div>
+    </a>
 </div>
