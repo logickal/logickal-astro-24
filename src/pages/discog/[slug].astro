@@ -2,20 +2,19 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import BandcampPlayer from "../../components/BandcampPlayer.astro";
-import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
+import discographyData from "../../assets/logickal-discography-FINAL.xlsx";
 import { parseJSON } from "date-fns";
 import { Image } from "astro:assets";
 import ReleaseImage from "../../components/ReleaseImage.astro";
-
-
+import DiscogText from "../../components/DiscogText.astro";
 
 export async function getStaticPaths() {
-    //console.log(discographyData[0]);
-    const paths = discographyData.map((album) => ({
-        params: { slug: album.slug },
-    }));
+  //console.log(discographyData[0]);
+  const paths = discographyData.map((album) => ({
+    params: { slug: album.slug },
+  }));
 
-    return paths;
+  return paths;
 }
 // Add include for discography markdown
 
@@ -23,47 +22,44 @@ const { slug } = Astro.params;
 const album = discographyData.find((album) => album.slug === slug);
 
 if (!album) {
-    Astro.response.status = 404;
-    Astro.response.statusText = 'Not Found';
+  Astro.response.status = 404;
+  Astro.response.statusText = "Not Found";
 }
 
 // Get Cover image
-const images = import.meta.glob('/src/assets/coverImg/*');
+const images = import.meta.glob("/src/assets/coverImg/*");
 const imageName = album.slug + "-cover.png";
 const imagePath = `/src/assets/coverImg/${album.slug}-cover.jpg`;
 const image = images[imagePath]();
-
 ---
 
-<Layout title=`Logickal - ${album.title}` subhead={album.title} >
-    {album.blurb && <h3 class="italic">{album.blurb}</h3>}
+<Layout title=`Logickal - ${album.title}` subhead={album.title}>
+  <div class="main">
 
-    <div class="main">
-
+    <div class="columns-2">
+      <div>
+        <ReleaseImage image={image} />        
+            {album.blurb && <h3 class="text-lg italic">{album.blurb}</h3>}
+            {album.catalogNumber && <p>Catalog Number: {album.catalogNumber}</p>}
+            {album.releaseDate && <p>Release Date: {album.releaseDate}</p>}    
+      </div>
+      <div class="sidebar">
         <div>
-
-            <ReleaseImage image={image} />
+          <BandcampPlayer
+            id="1957328024"
+            url="https://logickal.bandcamp.com/album/amulet"
+            title="Amulet"
+          />
         </div>
-        <div>
-            {album.credits && <p><span>Credits:</span> {album.credits}</p>}
-            {album.about && <p><span>About</span> {album.about}</p>}
-        </div>
-    
+
+      </div>
+  
     </div>
-    <div class="sidebar">
-        <div>
-            <BandcampPlayer id="1957328024" url="https://logickal.bandcamp.com/album/amulet" title="Amulet" />
-        </div>
-        {album.catalogNumber && <p>Catalog Number: {album.catalogNumber}</p>}
-        {album.releaseDate && <p>Release Date: {album.releaseDate}</p>}
-    
-    </div>
+  </div>
 
+  <div class="m-5 p-5">
+    <DiscogText header="Credits" text={album.credits} />
+    <DiscogText header="About" text={album.about} />
 
-
-
-
-    <div>
-        {JSON.stringify(album)}
-    </div>
+  </div>
 </Layout>
