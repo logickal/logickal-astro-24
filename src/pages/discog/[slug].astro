@@ -4,6 +4,8 @@ import Layout from "../../layouts/Layout.astro";
 import BandcampPlayer from "../../components/BandcampPlayer.astro";
 import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
 import { parseJSON } from "date-fns";
+import { Image } from "astro:assets";
+import ReleaseImage from "../../components/ReleaseImage.astro";
 
 
 
@@ -25,27 +27,47 @@ if (!album) {
     Astro.response.statusText = 'Not Found';
 }
 
+// Get Images
+const images = import.meta.glob('/src/assets/coverImg/*');
+const imageName = album.slug + "-cover.png";
+const imagePath = `/src/assets/coverImg/${album.slug}-cover.jpg`;
+
+
+console.log(imagePath);
+console.log(images);
+
+const image = images[imagePath]();
+console.log(image);
 
 ---
 
 <Layout title=`Logickal - ${album.title}` subhead={album.title} >
-
     {album.blurb && <h3 class="italic">{album.blurb}</h3>}
 
-    <div>
+    <div class="main">
+
+        <div>
+
+            <ReleaseImage image={image} />
+        </div>
+        <div>
+            {album.credits && <p><span>Credits:</span> {album.credits}</p>}
+            {album.about && <p><span>About</span> {album.about}</p>}
+        </div>
+    
+    </div>
+    <div class="sidebar">
+        <div>
+            <BandcampPlayer id="1957328024" url="https://logickal.bandcamp.com/album/amulet" title="Amulet" />
+        </div>
         {album.catalogNumber && <p>Catalog Number: {album.catalogNumber}</p>}
         {album.releaseDate && <p>Release Date: {album.releaseDate}</p>}
-        
+    
     </div>
 
-    <div>
-		<BandcampPlayer id="1957328024" url="https://logickal.bandcamp.com/album/amulet" title="Amulet" />
-    </div>
 
-    <div>
-        {album.credits && <p>Credits: {album.credits}</p>}
-        {album.about && <p>About: {album.about}</p>}
-    </div>
+
+
 
     <div>
         {JSON.stringify(album)}
