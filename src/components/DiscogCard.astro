@@ -1,15 +1,20 @@
 ---
 import { Image } from 'astro:assets';
 import { format } from 'date-fns';
+import FormattedDate from './atoms/FormattedDate.astro';
+
 const { release } = Astro.props;
 
-const formattedDate = format(new Date(release.releaseDate), 'MMMM do, yyyy');
+console.log(release.releaseDate);
+
+
+
 ---
 <div>
     <h4>{release.title}</h4>
     <ul>
         <li>{release.catalogNumber}</li>
-        <li>{formattedDate}</li>
+        <li><FormattedDate discogDate={release.releaseDate} /></li>
     </ul>
     <p>{release.blurb}</p>
 </div>
