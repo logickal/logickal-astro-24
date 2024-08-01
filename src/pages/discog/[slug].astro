@@ -35,20 +35,33 @@ const image = images[imagePath]();
 <Layout title=`Logickal - ${release.title}` subhead={release.title}>
   <div class="main">
 
-    <div class="columns-2">
-      <div>
-        <ReleaseImage image={image} />        
+    <div class="columns-2 space-x-4">
+      <div class="w-5/8 m-auto">
+        <ReleaseImage image={image} class=""/>     
+        <div class="break-after-column text-center">
             {release.blurb && <h3 class="text-lg italic">{release.blurb}</h3>}
             {release.catalogNumber && <p>Catalog Number: {release.catalogNumber}</p>}
-            {release.releaseDate && <p>Release Date: <FormattedDate discogDate={release.releaseDate} /></p>}    
+            {release.releaseDate && <p>Release Date: <FormattedDate discogDate={release.releaseDate} /></p>}        
+        </div>   
+            
       </div>
-      <div class="sidebar">
+      <div class="sidebar column-md object-contain">
         <div>
-          <BandcampPlayer
-            id="1957328024"
-            url="https://logickal.bandcamp.com/album/amulet"
-            title="Amulet"
-          />
+            {release.bandcampUrl &&
+            <div class="m-5 p-5">
+              <BandcampPlayer
+                id={release.id}
+                url={release.bandcampUrl}
+                title={release.title}
+                class="object-contain"
+              />
+              </div>
+              <div>
+                <ul>
+                    <li>Service icon placeholder</li>
+                </ul>
+              </div>
+            }
         </div>
 
       </div>
