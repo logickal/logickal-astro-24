@@ -5,7 +5,7 @@ import DiscogCard from '../../components/DiscogCard.astro';
 ---
 
 <Layout title="Logickal - Discography." subhead="Discography">
-<div>
+<div class="grid grid-cols-3">
     {discographyData.map(release => (
         <DiscogCard release={release} />
     ))}

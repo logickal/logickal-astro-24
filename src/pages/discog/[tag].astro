@@ -2,7 +2,6 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
-import { parseJSON } from "date-fns";
 import DiscogCard from "../../components/DiscogCard.astro";
 import tagMapping from "../../assets/lib/tagMapping";
 
@@ -34,7 +33,7 @@ console.log(releases);
 
 <Layout title={`Logickal - ${tagText}`} subhead={tagText} >
 
-    <div>
+    <div class="grid grid-cols-2">
         {releases.map(release => (
             <DiscogCard release={release} />
         ))}
