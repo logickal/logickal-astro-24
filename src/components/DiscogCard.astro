@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import { format } from "date-fns";
 import FormattedDate from "./atoms/FormattedDate.astro";
 import Slug from "../pages/discog/[slug].astro";
-import genericCdImage from "../assets/static-images/cd-image-1.jpeg"
 
 const { release } = Astro.props;
 const images = import.meta.glob("/src/assets/coverImg/*");
@@ -14,17 +13,7 @@ const getImage = (slug) => {
   return images[imagePath] ? images[imagePath] : null;
 };
 
-let image = null;
-let imageSrc = null;
-if (getImage) {
-   image = getImage(release.slug);
-   console.log(image);
-} else {
-
-  imageSrc = genericCdImage;
-  console.log(imageSrc);
-}
-
+  const image = getImage(release.slug);
 ---
 
 <a href={`/discog/${release.slug}`}>
