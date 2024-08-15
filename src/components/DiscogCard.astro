@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { format } from "date-fns";
 import FormattedDate from "./atoms/FormattedDate.astro";
 import Slug from "../pages/discog/[slug].astro";
+import defaultCdImage from '../assets/static-images/cd-image-1.jpeg'
 
 const { release } = Astro.props;
 const images = import.meta.glob("/src/assets/coverImg/*");
@@ -22,7 +23,7 @@ const getImage = (slug) => {
       {
         image ? (
           <Image src={image()} alt={release.title} class="object-contain w-full h-full" />
-        ) : null
+        ) : <Image src={defaultCdImage} alt="Generic CD Image" class="object-contain w-full h-full" />
       }
       <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
         <div class="release-info text-center outline-1 outline-gray-300 outline h-93 rounded-md p-2 w-10/12">
