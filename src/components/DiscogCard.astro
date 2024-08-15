@@ -1,34 +1,39 @@
 ---
-import { Image } from 'astro:assets';
-import { format } from 'date-fns';
-import FormattedDate from './atoms/FormattedDate.astro';
-import Slug from '../pages/discog/[slug].astro';
+import { Image } from "astro:assets";
+import { format } from "date-fns";
+import FormattedDate from "./atoms/FormattedDate.astro";
+import Slug from "../pages/discog/[slug].astro";
 
 const { release } = Astro.props;
 const images = import.meta.glob("/src/assets/coverImg/*");
 
-
 // Get Cover image
 const getImage = (slug) => {
-    const imagePath = `/src/assets/coverImg/${slug}-cover.jpg`;
-    return images[imagePath] ? images[imagePath] : null;
-}
+  const imagePath = `/src/assets/coverImg/${slug}-cover.jpg`;
+  return images[imagePath] ? images[imagePath] : null;
+};
 
 const image = getImage(release.slug);
 ---
 
 <a href={`/discog/${release.slug}`}>
-    <div class="text-xs font-mono rounded-md p-5 m-5 outline-1 outline-gray-300 outline">
-        { image ? <Image src={image()} alt={release.title} class="object-contain" /> : null }
-        <div>
-            <h4>{release.title}</h4>
-            <ul>
-                <li>{release.catalogNumber}</li>
-                <li><FormattedDate discogDate={release.releaseDate} /></li>
-            </ul>
-            <p>{release.blurb}</p>
-        </div>
+  <div
+    class="text-xs font-mono rounded-md p-5 m-5 outline-1 outline-gray-300 outline h-93"
+  >
+    <figure>
+      {
+        image ? (
+          <Image src={image()} alt={release.title} class="object-contain" />
+        ) : null
+      }
+    </figure>
+    <div class="">
+      <h4>{release.title}</h4>
+      <ul>
+        <li>{release.catalogNumber}</li>
+        <li><FormattedDate discogDate={release.releaseDate} /></li>
+      </ul>
+      <p>{release.blurb}</p>
     </div>
+  </div>
 </a>
-
-
