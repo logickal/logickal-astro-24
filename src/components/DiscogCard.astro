@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { format } from "date-fns";
 import FormattedDate from "./atoms/FormattedDate.astro";
 import Slug from "../pages/discog/[slug].astro";
+import genericCdImage from "../assets/static-images/cd-image-1.jpeg"
 
 const { release } = Astro.props;
 const images = import.meta.glob("/src/assets/coverImg/*");
@@ -13,27 +14,37 @@ const getImage = (slug) => {
   return images[imagePath] ? images[imagePath] : null;
 };
 
-const image = getImage(release.slug);
+let image = null;
+let imageSrc = null;
+if (getImage) {
+   image = getImage(release.slug);
+   console.log(image);
+} else {
+
+  imageSrc = genericCdImage;
+  console.log(imageSrc);
+}
+
 ---
 
 <a href={`/discog/${release.slug}`}>
-  <div
-    class="text-xs font-mono rounded-md p-5 m-5 outline-1 outline-gray-300 outline h-93"
-  >
-    <figure>
+  <div class="relative text-xs font-mono m-5">
+    <figure class="relative">
       {
         image ? (
-          <Image src={image()} alt={release.title} class="object-contain" />
+          <Image src={image()} alt={release.title} class="object-contain w-full h-full" />
         ) : null
       }
+      <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
+        <div class="release-info text-center outline-1 outline-gray-300 outline h-93 rounded-md p-2 w-10/12">
+          <h4>{release.title}</h4>
+          <ul>
+            <li>{release.label} {release.catalogNumber ? `:: ${release.catalogNumber}` : ''}</li>
+            <li><FormattedDate discogDate={release.releaseDate} /></li>
+          </ul>
+          <p>{release.blurb}</p>
+        </div>
+      </div>
     </figure>
-    <div class="">
-      <h4>{release.title}</h4>
-      <ul>
-        <li>{release.catalogNumber}</li>
-        <li><FormattedDate discogDate={release.releaseDate} /></li>
-      </ul>
-      <p>{release.blurb}</p>
-    </div>
   </div>
 </a>
