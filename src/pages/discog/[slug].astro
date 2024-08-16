@@ -6,6 +6,7 @@ import discographyData from "../../assets/logickal-discography-FINAL.xlsx";
 import ReleaseImage from "../../components/ReleaseImage.astro";
 import DiscogText from "../../components/DiscogText.astro";
 import FormattedDate from "../../components/atoms/FormattedDate.astro";
+import defaultCdImage from '../../assets/static-images/cd-image-1.jpeg'
 
 export async function getStaticPaths() {
   //console.log(discographyData[0]);
@@ -29,14 +30,19 @@ if (!release) {
 const images = import.meta.glob("/src/assets/coverImg/*");
 const imageName = release.slug + "-cover.png";
 const imagePath = `/src/assets/coverImg/${release.slug}-cover.jpg`;
-const image = images[imagePath]();
+let image = null;
+if (images[imagePath]) {
+  image = images[imagePath]();
+} else {
+  image = defaultCdImage;
+}
 ---
 
 <Layout title=`Logickal - ${release.title}` subhead={release.title}>
   <div class="main">
 
     <div class="columns-2 space-x-4">
-      <div class="w-5/8 m-auto">
+      <div class="w-5/8 m-auto flex flex-col justify-center items-center">
         <ReleaseImage image={image} class=""/>     
         <div class="break-after-column text-center">
             {release.blurb && <h3 class="text-lg italic">{release.blurb}</h3>}
