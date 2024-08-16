@@ -18,14 +18,14 @@ const getImage = (slug) => {
 ---
 
 <a href={`/discog/${release.slug}`}>
-  <div class="relative text-xs font-mono m-5">
+  <div class="relative text-xs font-mono m-5 group">
     <figure class="relative">
       {
         image ? (
           <Image src={image()} alt={release.title} class="object-contain w-full h-full" />
         ) : <Image src={defaultCdImage} alt="Generic CD Image" class="object-contain w-full h-full" />
       }
-      <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
+      <div class="absolute inset-0 items-center justify-center bg-black bg-opacity-50 text-white flex opacity-0 hover:opacity-100 transition-opacity ease-in-out duration-500">
         <div class="release-info text-center outline-1 outline-gray-300 outline h-93 rounded-md p-2 w-10/12">
           <h4>{release.title}</h4>
           <ul>
