@@ -18,14 +18,9 @@ const { title, subhead } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="font-sans text-zinc-500 bg-gray-900">
-		<container class="bg-gray-600 w-1/2">
-			<Header />
-			<main class="m-auto w-3/4 h-dvh">
-				<div class="page-header m-5 p-5">
-					<h1 class="text-3xl">Logickal</h1>
-					<h2 class="text-2xl">{subhead}</h2>	
-				</div>	
-				<slot />
+		<container class="w-full">
+			<main class="m-auto h-dvh">
+			<slot />
 			</main>
 			<footer>
 
