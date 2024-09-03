@@ -3,6 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import GenreGrid from '../components/GenreGrid.astro';
 import BandcampPlayer from '../components/BandcampPlayer.astro';
+import { Image } from "astro:assets";
+
+const images = import.meta.glob("../assets/imgBg/*");
+
 ---
 
 <Layout title="Logickal Electronic Music." subhead="Eclectic Electricism">
