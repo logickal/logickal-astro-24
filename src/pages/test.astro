@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import discographyData from '../assets/logickal-discography-FINAL.xlsx';
+
+console.log(discographyData);
+---
+
+
+<Layout title="Logickal Electronic Music.">
+    <h1>
+        Test
+    </h1>
+
+    <div>
+        {JSON.stringify(discographyData)}
+
+    </div>

@@ -1,0 +1,23 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+    title: string;
+    image: string;
+    link: string;
+}
+
+const { title, image, link } = Astro.props;
+const images = import.meta.glob("../assets/imgBg/*");
+let classes = null;
+
+
+---
+
+
+<div
+class="m-2 p-3 w-5/6 h-2/5 content-center text-center min-h-80 sticky top-0 bg-gray-600 border-2 border-gray-800 rounded-lg"
+>
+    <h2 class="text-lg font-mono font-bold text-slate-300">{title}</h2>
+</div>
