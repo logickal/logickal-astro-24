@@ -1,0 +1,12 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
+import DiscogCard from '../../components/DiscogCard.astro';
+---
+
+<Layout title="Logickal - Discography." subhead="Discography">
+<div class="grid grid-cols-3">
+    {discographyData.map(release => (
+        <DiscogCard release={release} />
+    ))}
+</div>

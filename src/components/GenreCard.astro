@@ -20,6 +20,8 @@ let genreText = tagMapping[genre] || genre;
 let genreUrl = '/discog';
 if (genre != "all") {
     genreUrl = `/discog/${genre}`;
+} else {
+    genreUrl = `/discog/all`;
 }
 
 if (aspect == "portrait") {
