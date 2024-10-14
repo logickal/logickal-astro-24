@@ -5,7 +5,13 @@ import FormattedDate from "./atoms/FormattedDate.astro";
 import Slug from "../pages/discog/[slug].astro";
 import defaultCdImage from '../assets/static-images/cd-image-1.jpeg'
 
-const { release } = Astro.props;
+const { release, size="med" } = Astro.props;
+var cardSize = size;
+if (cardSize == "small") {
+  cardSize = "w-3/12";
+} else {
+  cardSize = "w-7/12";
+}
 const images = import.meta.glob("/src/assets/coverImg/*");
 
 // Get Cover image
@@ -18,7 +24,7 @@ const getImage = (slug) => {
 ---
 
 <a href={`/discog/${release.slug}`}>
-  <div class="relative text-xs font-mono m-5 group">
+  <div class={`relative text-xs font-mono m-5 group mx-auto ${cardSize} border border-yellow-400/50`}>
     <figure class="relative">
       {
         image ? (

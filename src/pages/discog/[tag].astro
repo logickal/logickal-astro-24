@@ -33,8 +33,18 @@ console.log(releases);
 
 <Layout title={`Logickal - ${tagText}`} subhead={tagText} >
 
-    <div class="grid grid-cols-2">
+  <div class="p-2 content-center justify-center">
+    <div class="m-5 p-5 bg-gray-800">
+        <div>
+            <h1 class="text-2xl font-bold">Discography - {tagText}</h1>
+
+            <p class="font-mono">Logickal releases tagged {tagText}</p>    
+        </div>
+    </div>
+
+    <div class="w-10/12 mx-auto grid grid-cols-2 bg-gray-800/85">
         {releases.map(release => (
             <DiscogCard release={release} />
         ))}
     </div>
+  </div>  
