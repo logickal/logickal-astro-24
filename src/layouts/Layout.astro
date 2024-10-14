@@ -3,8 +3,7 @@ import Header from '../components/Header.astro';
 interface Props {
 	title: string;
 }
-
-const { title, subhead } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,15 +18,15 @@ const { title, subhead } = Astro.props;
 	</head>
 	<body class="font-sans text-zinc-500 bg-gray-900">
 		<Header />
-		<container class="w-full">
-			<main class="m-auto h-dvh">
+		<div class="w-full  bg-[url('/riso-bg-lg.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
+			<main class="m-auto">
 			<slot />
 			</main>
 			<footer>
 
 			</footer>
 
-		</container>
+		</div>
 
 	</body>
 </html>
