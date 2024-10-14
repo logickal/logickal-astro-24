@@ -38,13 +38,17 @@ const cards = [
 
 <Layout title="Logickal Electronic Music." subhead="Eclectic Electricism">
   <div>
-    <div class="flex items-center justify-center min-h-screen">
-      <div class="content-center text-center">
+    <div class="flex items-center justify-center">
+      <div class="content-center text-center w-9/12 bg-gray-800 min-h-screen">
         <h1 class="text-4xl font-mono">logickal</h1>
         <h3 class="text-xl font-sans">eclectic electronic musick</h3>
       </div>
     </div>
-    <div class="flex flex-wrap justify-center">
+	<div class="content-center text-center min-h-screen">
+		<h3>Latest Release</h3>
+		Latest release placeholder
+	</div>
+    <div class="flex flex-wrap">
 	  {cards.map((card) => (
 		<HomeCard title={card.title} link={card.link} image="" />
 	  ))}
