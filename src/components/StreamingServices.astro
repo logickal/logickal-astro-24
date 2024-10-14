@@ -1,0 +1,62 @@
+---
+import ServiceIconLink from "./atoms/ServiceIconLink.astro";
+
+let iconPath = "../../assets/icons/";
+let services = [
+  {
+    name: "Bandcamp",
+    icon: "icons8-bandcamp.svg",
+    url: "https://logickal.bandcamp.com",
+  },
+  {
+    name: "Apple Music",
+    icon: "icons8-apple-music.svg",
+    url: "https://music.apple.com/us/artist/logickal/156855379",
+  },
+  {
+    name: "Spotify",
+    icon: "icons8-spotify.svg",
+    url: "https://open.spotify.com/artist/6Mvi6AM1TSZGr0vWqV6GNM?si=t_UaaeHNR_6I-OgxuT1yyw",
+  },
+  {
+    name: "Amazon Music",
+    icon: "icons8-amazon-music.svg",
+    url: "https://amazon.com/music/player/artists/B000RSE9GG/logickal?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_jyGEzdmqx4DYnTe0BrjfcYVlj",
+  },
+  {
+    name: "YouTube Music",
+    icon: "icons8-youtube-music.svg",
+    url: "https://music.youtube.com/channel/UCtewbGbrBYnVVfyQcn89GeQ?si=JaejM18j-DzRTTYk",
+  },
+  {
+    name: "Tidal",
+    icon: "icons8-tidal.svg",
+    url: "https://www.tidal.com",
+  },
+  {
+    name: "Soundcloud",
+    icon: "icons8-soundcloud.svg",
+    url: "https://www.soundcloud.com",
+  },
+];
+---
+
+<div class="bg-gray-500 m-5 p-5 text-center text-black content-center">
+  <h3 class="text-lg font-mono font-bold">Logickal on Streaming</h3>
+  <p class="text-sm font-sans italic">
+    Logickal's musick is available on these and other fine streaming services:
+  </p>
+  <div class="my-5 w-full flex justify-center">
+    <div class="grid grid-cols-3 gap-8">
+      {
+        services.map((service) => (
+          <ServiceIconLink
+            serviceName={service.name}
+            serviceIconPath={iconPath + service.icon}
+            serviceUrl={service.url}
+          />
+        ))
+      }
+    </div>
+  </div>
+</div>

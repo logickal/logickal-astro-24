@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from 'astro';
+
+const icons = import.meta.glob("../../assets/icons/*");
+console.log(icons);
+interface Props {
+    serviceName: string;
+    serviceIconPath: string;
+    serviceUrl: string;
+}
+const { serviceName, serviceIconPath, serviceUrl } = Astro.props;
+
+console.log(serviceIconPath);
+---
+
+<a href={ serviceUrl }>
+    <Image src={ icons[serviceIconPath]() }  alt={serviceName} class="object-cover" />
+</a>
