@@ -9,29 +9,29 @@ const images = import.meta.glob("../assets/imgBg/*");
 
 const cards = [
   {
-	title: "Musick",
-	//image: "musick.jpg",
-	link: "/discog",
+    title: "Musick",
+    //image: "musick.jpg",
+    link: "/discog",
   },
   {
-	title: "Videos",
-	//image: "videos.jpg",
-	link: "/videos",
+    title: "Videos",
+    //image: "videos.jpg",
+    link: "/videos",
   },
   {
-	title: "About",
-	//image: "about.jpg",
-	link: "/about",
+    title: "About",
+    //image: "about.jpg",
+    link: "/about",
   },
   {
-	title: "Blog",
-	//image: "blog.jpg",
-	link: "/blog",
+    title: "Blog",
+    //image: "blog.jpg",
+    link: "/blog",
   },
   {
-	title: "Links",
-	//image: "links.jpg",
-	link: "/links",
+    title: "Links",
+    //image: "links.jpg",
+    link: "/links",
   },
 ];
 ---
@@ -39,26 +39,29 @@ const cards = [
 <Layout title="Logickal Electronic Music." subhead="Eclectic Electricism">
   <div>
     <div class="flex flex-col items-center justify-center">
-      <div class="content-center text-center w-9/12 bg-gray-800/75 min-h-screen my-5">
-		<div class="bg-black h-2/5">
-			<h1 class="text-4xl font-mono">logickal</h1>
-			<h3 class="text-xl font-sans">eclectic electronic musick</h3>
-		</div>
+      <div
+        class="content-center text-center w-9/12 bg-gray-800/75 min-h-screen my-5"
+      >
+        <div class="bg-black h-2/5">
+          <h1 class="text-4xl font-mono">logickal</h1>
+          <h3 class="text-xl font-sans">eclectic electronic musick</h3>
+        </div>
       </div>
-	  <div class="w-9/12 min-h-fit content-center text-center bg-gray-800/75 my-5">
-		<div class="h-1/12 bg-black content-center">
-			<h3 class="text-2xl">Latest Release</h3>
-		</div>
-		<div>	
-			Latest release placeholder
-		</div>
-	</div>
+      <div
+        class="w-9/12 min-h-fit content-center text-center bg-gray-800/75 my-5"
+      >
+        <div class="h-1/12 bg-black content-center">
+          <h3 class="text-2xl">Latest Release</h3>
+        </div>
+        <div>Latest release placeholder</div>
+      </div>
     </div>
-
     <div class="flex flex-wrap">
-	  {cards.map((card) => (
-		<HomeCard title={card.title} link={card.link} image="" />
-	  ))}
+      {
+        cards.map((card) => (
+          <HomeCard title={card.title} link={card.link} image="" />
+        ))
+      }
+    </div>
   </div>
-</div>
 </Layout>
