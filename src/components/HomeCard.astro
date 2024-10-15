@@ -6,9 +6,10 @@ interface Props {
     title: string;
     image: string;
     link: string;
+    text:string
 }
 
-const { title, image, link } = Astro.props;
+const { title, image, link, text } = Astro.props;
 const images = import.meta.glob("../assets/imgBg/*");
 let classes = null;
 
@@ -18,7 +19,8 @@ let classes = null;
 
 
 
-<a class="m2 p-3 w-4/6 h-1/5" href={link}>
-    <div class="w-1/6 flex justify-end bg-white p-2 transition-all duration-75 hover:w-2/6">
+<a href={link}>
+    <div class="m-5 p-3 w-full bg-gray-800/75 hover:bg-white h-16 hover:h-80 transition-all duration-75">
         <h3 class="text-lg font-mono">{title}</h3>
+        <p>{text}</p>
     </div>

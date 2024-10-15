@@ -14,11 +14,13 @@ const cards = [
     title: "Musick",
     //image: "musick.jpg",
     link: "/discog",
+	text: "Explore Logickal's discography."
   },
   {
     title: "Videos",
     //image: "videos.jpg",
     link: "/videos",
+	text: "Visit Youtube or streams on Twitch."
   },
   {
     title: "About",
@@ -53,9 +55,9 @@ const latestRelease = discographyData[0];
         </div>
       </div>
       <div
-        class="w-9/12 min-h-fit content-center text-center bg-black my-5 p-5"
+        class="w-9/12 min-h-fit content-center text-center my-5 p-5  bg-gradient-to-b from-black to-gray-800 border border-gray-600"
       >
-        <div class="h-1/12 bg-black text-left">
+        <div class="h-1/12text-left">
           <h3 class="text-2xl">Latest Release</h3>
         </div>
         <div class="content-center">
@@ -70,15 +72,16 @@ const latestRelease = discographyData[0];
         </div>
 
       </div>
-
 		<StreamingServices />
+
+		<div class="content-center w-8/12">
+			{
+			  cards.map((card) => (
+				<HomeCard title={card.title} link={card.link} image="" />
+			  ))
+			}
+		  </div>
     </div>
-    <div class="flex flex-wrap">
-      {
-        cards.map((card) => (
-          <HomeCard title={card.title} link={card.link} image="" />
-        ))
-      }
-    </div>
+
   </div>
 </Layout>
