@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 }
@@ -17,15 +18,15 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="font-sans text-zinc-500 bg-gray-900">
-		<Header />
-		<div class="w-full  bg-[url('/riso-bg-lg.jpg')] bg-no-repeat bg-cover bg-center bg-fixed">
+		<div class="w-full min-h-[6000px] bg-[url('/riso-bg-lg.jpg')] bg-no-repeat bg-cover bg-center bg-top relative ">
+			<Header />
 			<main class="m-auto">
 			<slot />
 			</main>
-			<footer>
 
-			</footer>
-
+			<div class="absolute bottom-0 left-0 w-full">
+				<Footer />
+			</div>
 		</div>
 
 	</body>
