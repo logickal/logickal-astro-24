@@ -40,7 +40,9 @@ if (images[imagePath]) {
 
 <Layout title=`Logickal - ${release.title}` subhead={release.title}>
   <div class="main mt-12 pt-10 text-white">
-
+    <div class="mx-5 my-10 bg-gray-600/80 p-5">
+      <h2 class="text-lg font-mono">{release.title}</h2>
+    </div>
     <div class="columns-2 space-x-4 mx-5 my-10 bg-gray-600/80 p-5">
       <div class="m-auto flex flex-col justify-center items-center">
         <ReleaseImage image={image} class=""/>     
