@@ -14,28 +14,36 @@ const cards = [
     title: "Musick",
     //image: "musick.jpg",
     link: "/discog",
-	text: "Explore Logickal's discography."
+	text: "explore the discography.",
+	tile: 0
   },
   {
     title: "Videos",
     //image: "videos.jpg",
     link: "/videos",
-	text: "Visit Youtube or streams on Twitch."
+	text: "view videos and streams.",
+	tile: 1
   },
   {
     title: "About",
     //image: "about.jpg",
     link: "/about",
+	text: "introductory text",
+	tile: 2
   },
   {
     title: "Blog",
     //image: "blog.jpg",
     link: "/blog",
+	text: "current thoughts. sporadically updated",
+	tile: 3
   },
   {
     title: "Links",
     //image: "links.jpg",
     link: "/links",
+	text: "external links",
+	tile: 4
   },
 ];
 
@@ -77,7 +85,7 @@ const latestRelease = discographyData[0];
 		<div class="content-center w-8/12">
 			{
 			  cards.map((card) => (
-				<HomeCard title={card.title} link={card.link} image="" />
+				<HomeCard title={card.title} link={card.link} tile={card.tile} text={card.text} />
 			  ))
 			}
 		  </div>
