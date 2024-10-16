@@ -6,6 +6,8 @@ import BandcampPlayer from "../components/BandcampPlayer.astro";
 import discographyData from "../assets/logickal-discography-FINAL.xlsx";
 import DiscogCard from "../components/DiscogCard.astro";
 import StreamingServices from "../components/StreamingServices.astro";
+import LatestRelease from "../components/LatestRelease.astro";
+import HomeTitle from "../components/HomeTitle.astro";
 
 const images = import.meta.glob("../assets/imgBg/*");
 
@@ -54,32 +56,8 @@ const latestRelease = discographyData[0];
 <Layout title="Logickal Electronic Music." subhead="Eclectic Electricism">
   <div>
     <div class="flex flex-col items-center justify-center">
-      <div
-        class="content-center text-center w-9/12 bg-gradient-to-t from-gray-800 min-h-screen my-5"
-      >
-        <div class="bg-black h-2/5">
-          <h1 class="text-4xl font-mono">logickal</h1>
-          <h3 class="text-xl font-sans">eclectic electronic musick</h3>
-        </div>
-      </div>
-      <div
-        class="w-9/12 min-h-fit content-center text-center my-5 p-5  bg-gradient-to-b from-black to-gray-800 border border-gray-600"
-      >
-        <div class="h-1/12text-left">
-          <h3 class="text-2xl">Latest Release</h3>
-        </div>
-        <div class="content-center">
-          <DiscogCard release={latestRelease} size="small" />
-          <p>
-            <a
-              class="text-lg font-bold hover:text-yellow-600"
-              href={latestRelease.bandcampUrl}
-              >Listen and Purchase on Bandcamp.</a
-            >
-          </p>
-        </div>
-
-      </div>
+		<HomeTitle />
+		<LatestRelease latestRelease={latestRelease} />
 		<StreamingServices />
 
 		<div class="content-center w-8/12">
