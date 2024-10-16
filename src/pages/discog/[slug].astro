@@ -39,10 +39,10 @@ if (images[imagePath]) {
 ---
 
 <Layout title=`Logickal - ${release.title}` subhead={release.title}>
-  <div class="main">
+  <div class="main mt-12 pt-10 text-white">
 
-    <div class="columns-2 space-x-4">
-      <div class="w-5/8 m-auto flex flex-col justify-center items-center">
+    <div class="columns-2 space-x-4 mx-5 my-10 bg-gray-600/80 p-5">
+      <div class="m-auto flex flex-col justify-center items-center">
         <ReleaseImage image={image} class=""/>     
         <div class="break-after-column text-center">
             {release.blurb && <h3 class="text-lg italic">{release.blurb}</h3>}
@@ -75,7 +75,7 @@ if (images[imagePath]) {
     </div>
   </div>
 
-  <div class="m-5 p-5">
+  <div class="mx-24 my-5 p-5 bg-gray-700 border-2 border-gray-800">
     <DiscogText header="Credits" text={release.credits} />
     <DiscogText header="About" text={release.about} />
 
