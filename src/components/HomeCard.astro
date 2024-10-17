@@ -9,13 +9,12 @@ import tile4 from '../assets/card-image/tile-4.png';
 
 interface Props {
     title: string;
-    image: string;
     link: string;
     text: string;
     tile: number;
 }
 
-const { title, image, link, text, tile } = Astro.props;
+const { title, link, text, tile } = Astro.props;
 let classes = null;
 
 const tileImages = [tile0, tile1, tile2, tile3, tile4];

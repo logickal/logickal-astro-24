@@ -1,0 +1,51 @@
+---
+import HomeCard from "./HomeCard.astro";
+
+const cards = [
+  {
+    title: "Musick",
+    //image: "musick.jpg",
+    link: "/discog",
+	text: "explore the discography.",
+	tile: 0
+  },
+  {
+    title: "Videos",
+    //image: "videos.jpg",
+    link: "/videos",
+	text: "view videos and streams.",
+	tile: 1
+  },
+  {
+    title: "About",
+    //image: "about.jpg",
+    link: "/about",
+	text: "introductory text",
+	tile: 2
+  },
+  {
+    title: "Blog",
+    //image: "blog.jpg",
+    link: "/blog",
+	text: "current thoughts. sporadically updated",
+	tile: 3
+  },
+  {
+    title: "Links",
+    //image: "links.jpg",
+    link: "/links",
+	text: "external links",
+	tile: 4
+  },
+];
+
+
+---
+
+<div class="w-9/12 bg-gradient-to-b from-gray-800  mb-5 content-center">
+    {
+      cards.map((card) => (
+        <HomeCard title={card.title} link={card.link} text={card.text} tile={card.tile} />
+      ))
+    }
+  </div>

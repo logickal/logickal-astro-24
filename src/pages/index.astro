@@ -8,46 +8,9 @@ import DiscogCard from "../components/DiscogCard.astro";
 import StreamingServices from "../components/StreamingServices.astro";
 import LatestRelease from "../components/LatestRelease.astro";
 import HomeTitle from "../components/HomeTitle.astro";
+import HomeNav from "../components/HomeNav.astro";
 
 const images = import.meta.glob("../assets/imgBg/*");
-
-const cards = [
-  {
-    title: "Musick",
-    //image: "musick.jpg",
-    link: "/discog",
-	text: "explore the discography.",
-	tile: 0
-  },
-  {
-    title: "Videos",
-    //image: "videos.jpg",
-    link: "/videos",
-	text: "view videos and streams.",
-	tile: 1
-  },
-  {
-    title: "About",
-    //image: "about.jpg",
-    link: "/about",
-	text: "introductory text",
-	tile: 2
-  },
-  {
-    title: "Blog",
-    //image: "blog.jpg",
-    link: "/blog",
-	text: "current thoughts. sporadically updated",
-	tile: 3
-  },
-  {
-    title: "Links",
-    //image: "links.jpg",
-    link: "/links",
-	text: "external links",
-	tile: 4
-  },
-];
 
 //Get the first release for the latest release card
 const latestRelease = discographyData[0];
@@ -58,19 +21,9 @@ const latestRelease = discographyData[0];
     <div class="flex flex-col items-center justify-center">
 		<HomeTitle />
 		<div class="w-9/12 bg-gradient-to-b from-gray-800 min-h-screen mb-5"></div>
-		<LatestRelease latestRelease={latestRelease} />
-		<StreamingServices />
-
-		<div class="w-9/12 bg-gradient-to-b from-gray-800  mb-5 content-center">
-			{
-			  cards.map((card) => (
-				<HomeCard title={card.title} link={card.link} tile={card.tile} text={card.text} />
-			  ))
-			}
-		  </div>
-		  <div class="w-9/12 bg-gradient-to-t from-gray-800 min-h-screen mb-5">
-
-		  </div>
+	  	<LatestRelease latestRelease={latestRelease} />
+		  <StreamingServices />
+      <HomeNav />  
     </div>
 
   </div>
