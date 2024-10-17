@@ -1,11 +1,21 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import backgroundImage from '../assets/imgBg/riso-bg-lg.jpg';
+
+
 interface Props {
 	title: string;
 }
 const { title } = Astro.props;
 ---
+
+<script>
+	import SimpleParallax from 'simple-parallax-js/vanilla';
+	var image = document.getElementsByClassName('parallax-div');
+	new SimpleParallax(image);
+</script>
 
 <!doctype html>
 <html lang="en" class="text-gray-400">
@@ -18,14 +28,22 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body class="font-sans text-zinc-500 bg-gray-900">
-		<div class="w-full min-h-[6000px] bg-[url('/riso-bg-lg.jpg')] bg-no-repeat bg-cover bg-center bg-top relative ">
-			<Header />
-			<main class="m-auto">
-			<slot />
-			</main>
-
-			<div class="absolute bottom-0 left-0 w-full">
-				<Footer />
+		<div class="w-full min-h-[6000px] relative ">
+			<div class="absolute inset-0 z-0">
+				<div class="parallax-div min-h-[6000px]">
+					<Image src={backgroundImage} alt="background image" class="w-full h-full object-cover" height=6000 />
+				</div>
+			</div>
+			<div class="relative z-10">
+				<Header />
+				<main class="m-auto">
+				<slot />
+				</main>
+	
+				<div class="absolute bottom-0 left-0 w-full">
+					<Footer />
+				</div>
+	
 			</div>
 		</div>
 

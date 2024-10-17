@@ -1,0 +1,12 @@
+---
+import SimpleParallax from 'simple-parallax-js';
+import { Image } from 'astro:assets';
+import backgroundImage from '../assets/imgBg/riso-bg-lg.jpg'
+---
+<SimpleParallax>
+    <div class="parallax-div">
+        <Image src={backgroundImage} alt="background image" class="w-full h-full object-cover" />
+    </div>
+</SimpleParallax>
+
+
