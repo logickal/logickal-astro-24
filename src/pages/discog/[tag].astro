@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import discographyData from '../../assets/logickal-discography-FINAL.xlsx';
 import DiscogCard from "../../components/DiscogCard.astro";
 import tagMapping from "../../assets/lib/tagMapping";
+import DiscographyHeader from "../../components/DiscographyHeader.astro";
 
 
 export async function getStaticPaths() {
@@ -30,17 +31,7 @@ const tagText = tagMapping[Astro.params.tag] || Astro.params.tag;
 ---
 
 <Layout title={`Logickal - ${tagText}`} >
-  <div class="header m-5 p-5 bg-gray-800 fixed top-0 left-0 right-0 z-10">
-    <div>
-        <h1 class="text-2xl font-bold text-gray-200">Discography - {tagText}</h1>
-
-        <p class="font-mono">Logickal releases tagged {tagText}</p> 
-        <div class="pt-2 font-mono text-sm text-right">
-          <p><a href="/discog" class="hover:text-blue-400">genre selection</a></p>
-          <p><a href="/discog/all" class="hover:text-blue-400">all releases</a></p>
-        </div>
-    </div>
-</div>
+<DiscographyHeader tagText={tagText} />
   <div class="discography mt-32 p-2 content-center justify-center ">
     <div class="relative w-9/12 bg-gradient-to-t from-gray-800 min-h-screen my-10 py-5 mx-auto grid grid-cols-2">
         {releases.map(release => (
