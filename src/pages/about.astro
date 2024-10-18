@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Prose from '../components/Prose.astro'
+import { Content as BioContent, frontmatter as bio } from '../assets/bio.md'
+import { Content as GearContent, frontmatter as gear } from '../assets/gear.md'
+import { Image } from 'astro:assets'
+import portrait from '../assets/static-images/self-portrait-bw-sept24.jpg'
+---
+<Layout>
+    <div class="flex flex-col items-center justify-center">
+		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
+            <h1 class="text-gray-300 text-lg mb-5">{bio.title}</h1>
+            <Prose>
+                <BioContent />
+            </Prose>
+            <Image src={portrait} alt="Self Portrait" class="w-2/5 rounded-full mx-auto my-24 outline inset" />
+            <h2 class="text-gray-300 mb-5">{ gear.title }</h3>
+            <div class="text-left">
+            <Prose>
+                <GearContent />
+            </Prose>
+        </div>
+        </div>
+    </div>
+</Layout>
