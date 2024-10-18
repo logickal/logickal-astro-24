@@ -1,0 +1,18 @@
+backend:
+  name: git-gateway
+  branch: main
+collections:
+  - name: "jrnl" # Used in routes, e.g., /admin/collections/blog
+    label: "jrnl" # Used in the UI
+    folder: "src/content/jrnl" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in frontmatter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "blog" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "thumbnail", widget: "image" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+media_folder: "src/assets/uploads" # Location where files will be stored in the repo
+public_folder: "src/assets/uploads" # The src attribute for uploaded media
