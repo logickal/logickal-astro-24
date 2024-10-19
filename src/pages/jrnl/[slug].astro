@@ -1,6 +1,6 @@
 ---
 import { loadQuery } from '../../sanity/lib/load-query.js'
-import Layout from '../../layouts/Layout.astro'
+import LayoutShort from '../../layouts/LayoutShort.astro'
 
 export async function getStaticPaths() {
     const { data: posts } = await loadQuery({query: `*[_type == "post"]`, params: {}});
@@ -24,7 +24,7 @@ const { data: post } = await loadQuery({
 
 ---
 
-<Layout title="Logickal - JRNL">
+<LayoutShort title="Logickal - JRNL">
     <div class="flex flex-col items-center justify-center">
 		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
             <h1>JRNL</h1>
