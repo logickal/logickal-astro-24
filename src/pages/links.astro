@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Prose from '../components/Prose.astro'
+import { Content as LinksContent } from "../assets/links.md"
+---
+
+<Layout title='Logickal - Links'>
+    <div class="flex flex-col items-center justify-center">
+		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center ">
+            <div class="m-16 p-5">
+            <h1 class="text-gray-300 text-lg mb-5">Links</h1>
+            <p>Here are some additional locations around the web with information and content by/for/about Logickal.</p>
+      
+            <div class="text-left text-sm">
+                <Prose>
+                    <LinksContent />
+                </Prose>
+            </div>
+        </div>
+
+
+    </div>
+</Layout>
