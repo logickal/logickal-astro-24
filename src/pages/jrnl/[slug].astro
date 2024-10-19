@@ -2,6 +2,8 @@
 import { loadQuery } from '../../sanity/lib/load-query.js'
 import LayoutShort from '../../layouts/LayoutShort.astro'
 import {PortableText as PortableTextInternal} from 'astro-portabletext'
+import Header1 from '../../components/atoms/headers/Header1.astro'
+import Header2 from '../../components/atoms/headers/Header2.astro'
 
 export async function getStaticPaths() {
     const { data: posts } = await loadQuery({query: `*[_type == "post"]`, params: {}});
@@ -30,8 +32,8 @@ console.log(post);
     <div class="flex flex-col items-center justify-center">
 		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
             <div class="mb-5">   
-                <h1>JRNL</h1>
-                <h2>{post.title}</h2>
+                <Header1>JRNL</Header1>
+                <Header2>{post.title}</Header2>
                 <div>
                     <p>{post._createdAt}</p>
                 </div>
