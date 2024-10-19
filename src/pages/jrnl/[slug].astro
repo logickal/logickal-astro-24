@@ -1,6 +1,7 @@
 ---
 import { loadQuery } from '../../sanity/lib/load-query.js'
 import LayoutShort from '../../layouts/LayoutShort.astro'
+import {PortableText as PortableTextInternal} from 'astro-portabletext'
 
 export async function getStaticPaths() {
     const { data: posts } = await loadQuery({query: `*[_type == "post"]`, params: {}});
@@ -22,12 +23,23 @@ const { data: post } = await loadQuery({
     params: { slug: slug },
 });
 
+console.log(post);
 ---
 
 <LayoutShort title="Logickal - JRNL">
     <div class="flex flex-col items-center justify-center">
 		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
-            <h1>JRNL</h1>
-            <h2>{post.title}</h2>
+            <div class="mb-5">   
+                <h1>JRNL</h1>
+                <h2>{post.title}</h2>
+                <div>
+                    <p>{post._createdAt}</p>
+                </div>
+    
+            </div>
+            <div class="text-gray-400 text-sm text-left">
+                <PortableTextInternal value={post.body} />
+
+            </div>
         </div>
   </div>
