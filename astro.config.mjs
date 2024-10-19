@@ -1,8 +1,12 @@
 import { readFileSync } from 'fs';
 import { defineConfig } from 'astro/config';
+import sanity from '@sanity/astro';
+import react from '@astrojs/react';
 import tailwind from "@astrojs/tailwind";
 import * as XLSX from 'xlsx';
 import mdx from "@astrojs/mdx";
+
+
 
 function excelDateToJSDate(serial) {
   const utc_days = Math.floor(serial - 25569);
@@ -23,9 +27,16 @@ function excelDateToJSDate(serial) {
   return new Date(Date.UTC(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds));
 }
 
+const sanityConf = {
+  projectId: 'zbrphau8',
+  dataset: 'production',
+  useCdn: false,
+  studioBasePath: '/admin',
+};
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), mdx()],
+
+  integrations: [tailwind(), mdx(), sanity(sanityConf), react()],
   vite: {
     assetsInclude: ['**/*.numbers', '**/*.xlsx', '**/*.xls', '**/*.xlsb'],
 
