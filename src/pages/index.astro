@@ -5,6 +5,7 @@ import StreamingServices from "../components/StreamingServices.astro";
 import LatestRelease from "../components/LatestRelease.astro";
 import HomeTitle from "../components/HomeTitle.astro";
 import HomeNav from "../components/HomeNav.astro";
+import AMAmember from "../components/AMAmember.astro";
 
 const images = import.meta.glob("../assets/imgBg/*");
 
@@ -16,10 +17,10 @@ const latestRelease = discographyData[0];
   <div>
     <div class="flex flex-col items-center justify-center">
 		<HomeTitle />
-		<div class="w-9/12 bg-gradient-to-b from-gray-800 min-h-screen mb-5"></div>
 	  	<LatestRelease latestRelease={latestRelease} />
 		  <StreamingServices />
-      <HomeNav />  
+      <HomeNav />
+      <AMAmember />  
     </div>
 
   </div>

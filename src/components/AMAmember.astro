@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import amaMember from "../assets/static-images/ama-badge.png";
+---
+
+<div
+  class="w-3/5 min-h-fit content-center text-center my-5 p-5 bg-gradient-to-b from-black to-gray-800 border border-gray-600 rounded-md"
+>
+  <div class="content-center">
+    <a href="https://www.stretchmetal.org/join-ama" target="_blank">
+      <Image
+        src={amaMember}
+        alt="AMA Member Badge"
+        class="w-1/5 mx-auto my-5"
+      />
+    </a>
+    <h4 class="italic font-mono text-yellow-700">
+      Proud Member of the
+      <a
+        href="https://www.stretchmetal.org/join-ama"
+        target="_blank"
+        class="hover:text-gray-400 text-yellow-600"
+        >Atmospheric Music Alliance
+      </a>
+    </h4>
+  </div>
+</div>
