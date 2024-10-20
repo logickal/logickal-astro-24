@@ -1,31 +1,32 @@
 ---
 import { loadQuery } from '../../sanity/lib/load-query.js'
 import LayoutShort from '../../layouts/LayoutShort.astro'
-import {PortableText as PortableTextInternal} from 'astro-portabletext'
 import Header1 from '../../components/atoms/headers/Header1.astro'
 import Header2 from '../../components/atoms/headers/Header2.astro'
-
+import { sanityClient } from 'sanity:client'
+import { PortableText } from 'astro-portabletext'
+import { List } from 'astro-portabletext/components'
+import Prose from '../../components/Prose.astro'
+ 
 export async function getStaticPaths() {
-    const { data: posts } = await loadQuery({query: `*[_type == "post"]`, params: {}});
+    const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.current)]`);
 
-    return posts.map(( { slug }) => {
-        return {
-            params: {
-                slug: slug.current,
-            },
-        };
-
-    });
+    return posts.map((post) => ({
+        params: { slug: post.slug.current },
+    }));
 }
 
 const { slug } = Astro.params;
 
-const { data: post } = await loadQuery({
-    query: `*[_type == "post" && slug.current == $slug][0]`,
-    params: { slug: slug },
-});
+const { title, body, _createdAt, categories } = await sanityClient.fetch(`*[_type == "post" && slug.current == $slug][0]`, { slug });
 
-console.log(post);
+
+const components = {
+    list: List,
+};
+
+console.log(body);
+
 ---
 
 <LayoutShort title="Logickal - JRNL">
@@ -33,14 +34,17 @@ console.log(post);
 		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
             <div class="mb-5">   
                 <Header1>JRNL</Header1>
-                <Header2>{post.title}</Header2>
+                <Header2>{title}</Header2>
                 <div>
-                    <p>{post._createdAt}</p>
+                    <p>{}</p>
                 </div>
     
             </div>
             <div class="text-gray-400 text-sm text-left">
-                <PortableTextInternal value={post.body} />
+                <Prose>
+                    <PortableText value={body} components={components} />
+
+                </Prose>
 
             </div>
         </div>
