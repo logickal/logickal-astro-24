@@ -35,17 +35,17 @@ const components = {
 
 <LayoutShort title="Logickal - JRNL">
     <div class="flex flex-col items-center justify-center">
-		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-gray-600 min-h-screen mb-5 text-center">
+		<div class="w-9/12 p-32 bg-gray-800  text-gray-800 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
             <div class="mb-5">   
                 <Header1>JRNL</Header1>
                 <Header2>{title}</Header2>
                 <div>
-                    <FormattedDate type="dark" discogDate={_createdAt} />
+                    <FormattedDate type="light" discogDate={_createdAt} />
                 </div>
     
             </div>
             <div class="text-gray-400 text-sm text-left">
-                <Prose>
+                <Prose extraClasses="prose-a:text-blue-600 prose-a:hover:text-blue-300">
                     <PortableText value={body} components={components} />
 
                 </Prose>

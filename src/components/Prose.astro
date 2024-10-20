@@ -1,6 +1,9 @@
 ---
+let { extraClasses } = Astro.props;
+
+let classes = 'prose prose-p:text-gray-500 prose-li:text-gray-200 prose-h3:text-gray-500 prose-h3:text-lg ' + extraClasses;
 ---
 
-<div class="prose prose-p:text-gray-500 prose-li:text-gray-200 prose-h3:text-gray-500 prose-h3:text-lg">
+<div class={classes}>
   <slot />
 </div>
