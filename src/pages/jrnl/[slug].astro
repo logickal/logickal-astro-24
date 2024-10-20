@@ -7,6 +7,7 @@ import { sanityClient } from 'sanity:client'
 import { PortableText } from 'astro-portabletext'
 import { List } from 'astro-portabletext/components'
 import Prose from '../../components/Prose.astro'
+import FormattedDate from '../../components/atoms/FormattedDate.astro'
  
 export async function getStaticPaths() {
     const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.current)]`);
@@ -25,18 +26,17 @@ const components = {
     list: List,
 };
 
-console.log(body);
 
 ---
 
 <LayoutShort title="Logickal - JRNL">
     <div class="flex flex-col items-center justify-center">
-		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
+		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-gray-600 min-h-screen mb-5 text-center">
             <div class="mb-5">   
                 <Header1>JRNL</Header1>
                 <Header2>{title}</Header2>
                 <div>
-                    <p>{}</p>
+                    <FormattedDate type="dark" discogDate={_createdAt} />
                 </div>
     
             </div>

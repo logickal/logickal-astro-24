@@ -2,6 +2,22 @@
 import Layout from '../../layouts/Layout.astro'
 import Header1 from '../../components/atoms/headers/Header1.astro'
 import Header2 from '../../components/atoms/headers/Header2.astro'
+import { sanityClient } from 'sanity:client'
+import { PortableText } from 'astro-portabletext'
+import BlogCard from '../../components/BlogCard.astro'
+
+const query = `*[_type == "post"] | order(_createdAt desc) {
+    title,
+    slug,
+    _createdAt,
+    body,
+    categories[]->{
+        title
+    }
+}`
+
+const blogPosts = await sanityClient.fetch(query);
+
 ---
 
 <Layout title="Logickal - Journal">
@@ -11,6 +27,11 @@ import Header2 from '../../components/atoms/headers/Header2.astro'
             <Header1>JRNL</Header1>
             <Header2>thoughts and words</Header2>
              </div>
+             <div class="grid grid-cols-1">
+                {blogPosts.map(post => (
+                    <BlogCard key={post._id} post={post} />
+                ))}
+            </div>
          </div>
     </div>
 </Layout>   

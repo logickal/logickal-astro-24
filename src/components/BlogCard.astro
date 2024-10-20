@@ -1,0 +1,26 @@
+---
+import Header2 from './atoms/headers/Header2.astro'
+import FormattedDate from './atoms/FormattedDate.astro'
+import { PortableText } from 'astro-portabletext'
+import Prose from './Prose.astro'
+const { key, post } = Astro.props;
+
+function truncatePortableText(content, maxBlocks = 1) {
+    const blocks = content.filter(block => block._type === 'block');
+    return blocks.slice(0, maxBlocks);
+}
+
+const truncatedBody = truncatePortableText(post.body, 1);
+
+
+---
+<a href=`/jrnl/${post.slug.current}`>
+    <div class="group p-5 bg-gray-800 text-gray-600 bg-gradient-to-b from-black border border-gray-600 hover:border-blue-600 rounded-md ">
+        <Header2>{post.title}</Header2>
+        <FormattedDate discogDate={post._createdAt} />
+        <Prose class="text-sm">
+            <PortableText value={truncatedBody} />
+            <div class="text-blue-400 group-hover:text-blue-600">read more...</div>
+        </Prose>
+    </div>
+</a>
