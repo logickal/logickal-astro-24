@@ -1,11 +1,18 @@
 ---
 import { format } from 'date-fns';
 
-const { discogDate } = Astro.props;
+const { type, discogDate } = Astro.props;
 const formattedDate = format(new Date(discogDate), 'yyyy-MM-dd');
 
+var style = '';
+
+if (type == "dark") {
+    style = "text-gray-800";
+} else {
+    style = "text-gray-200";
+}
 ---
 
-<span>
+<span class={style}>
     {formattedDate}
 </span>
