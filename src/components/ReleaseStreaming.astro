@@ -1,0 +1,40 @@
+---
+import ServicesData from '../assets/lib/servicesData';
+import ServiceIconLink from './atoms/ServiceIconLink.astro';
+
+let { release } = Astro.props;
+let services = ServicesData.filter(service => service.type == 'music');
+let releaseServices = [];
+
+// For each service in the sevices array, check the release data to see if there is an associated URL property
+// If there is, add the URL to the releaseService array
+services.forEach(service => {
+    let streamUrl = service.name + 'Url';
+  if (release[streamUrl]) {
+    releaseServices.push({
+      name: service.name,
+      icon: service.icon,
+      url: release[streamUrl]
+    });
+  }
+});
+
+---
+<div class="bg-gray-500 my-12 p-5 text-center text-black content-center rounded-md">
+  <h3 class="text-lg font-mono font-bold text-yellow-400">Streaming</h3>
+  <p class="text-sm font-sans italic">
+    Stream the release on these and other fine services:
+  </p>
+  <div class="my-5 w-full flex justify-center">
+    <div class="grid grid-cols-3 gap-8">
+      {
+        releaseServices.map((service) => (
+          <ServiceIconLink
+            serviceName={service.name}
+            serviceIconPath={service.icon}
+            serviceUrl={service.url}
+          />
+        ))
+      }
+    </div>
+  </div>

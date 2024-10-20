@@ -1,9 +1,9 @@
 ---
 import ServiceIconLink from "./atoms/ServiceIconLink.astro";
-import ServiceIcons from '../assets/lib/serviceIcons';
+import ServicesData from '../assets/lib/servicesData';
 
 let iconPath = "../../assets/icons/";
-let services = ServiceIcons.filter(service => service.type == 'music');
+let services = ServicesData.filter(service => service.type == 'music');
 ---
 
 <div class="bg-gray-500 my-12 p-5 text-center text-black content-center rounded-md">
