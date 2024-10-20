@@ -8,7 +8,8 @@ import { PortableText } from 'astro-portabletext'
 import { List } from 'astro-portabletext/components'
 import Prose from '../../components/Prose.astro'
 import FormattedDate from '../../components/atoms/FormattedDate.astro'
- 
+import BlogImage from '../../components/portabletext/BlogImage.astro'
+
 export async function getStaticPaths() {
     const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.current)]`);
 
@@ -24,6 +25,9 @@ const { title, body, _createdAt, categories } = await sanityClient.fetch(`*[_typ
 
 const components = {
     list: List,
+    type: {
+        image: BlogImage,
+    }
 };
 
 
