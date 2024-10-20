@@ -1,44 +1,9 @@
 ---
 import ServiceIconLink from "./atoms/ServiceIconLink.astro";
+import ServiceIcons from '../assets/lib/serviceIcons';
 
 let iconPath = "../../assets/icons/";
-let services = [
-  {
-    name: "Bandcamp",
-    icon: "icons8-bandcamp.svg",
-    url: "https://logickal.bandcamp.com",
-  },
-  {
-    name: "Apple Music",
-    icon: "icons8-apple-music.svg",
-    url: "https://music.apple.com/us/artist/logickal/156855379",
-  },
-  {
-    name: "Spotify",
-    icon: "icons8-spotify.svg",
-    url: "https://open.spotify.com/artist/6Mvi6AM1TSZGr0vWqV6GNM?si=t_UaaeHNR_6I-OgxuT1yyw",
-  },
-  {
-    name: "Amazon Music",
-    icon: "icons8-amazon-music.svg",
-    url: "https://amazon.com/music/player/artists/B000RSE9GG/logickal?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_jyGEzdmqx4DYnTe0BrjfcYVlj",
-  },
-  {
-    name: "YouTube Music",
-    icon: "icons8-youtube-music.svg",
-    url: "https://music.youtube.com/channel/UCtewbGbrBYnVVfyQcn89GeQ?si=JaejM18j-DzRTTYk",
-  },
-  {
-    name: "Tidal",
-    icon: "icons8-tidal.svg",
-    url: "https://www.tidal.com",
-  },
-  {
-    name: "Soundcloud",
-    icon: "icons8-soundcloud.svg",
-    url: "https://www.soundcloud.com",
-  },
-];
+let services = ServiceIcons.filter(service => service.type == 'music');
 ---
 
 <div class="bg-gray-500 my-12 p-5 text-center text-black content-center rounded-md">
