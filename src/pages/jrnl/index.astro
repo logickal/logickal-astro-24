@@ -3,7 +3,6 @@ import Layout from '../../layouts/Layout.astro'
 import Header1 from '../../components/atoms/headers/Header1.astro'
 import Header2 from '../../components/atoms/headers/Header2.astro'
 import { sanityClient } from 'sanity:client'
-import { PortableText } from 'astro-portabletext'
 import BlogCard from '../../components/BlogCard.astro'
 
 const query = `*[_type == "post"] | order(_createdAt desc) {
