@@ -1,0 +1,25 @@
+---
+import Header1 from './atoms/headers/Header1.astro'
+
+const { release } = Astro.props;
+
+const tagsArray = release.tags.split(',').map(tag => tag.trim());
+
+---
+
+<div class="header m-5 p-5 bg-gray-800 z-10">
+    <div>
+        <Header1>{release.title}</Header1>
+
+        <div class="pt-2 font-mono text-sm text-right">
+
+            {tagsArray.map(tag => (
+                <p key={tag}><a href={`/discog/${tag}`} class="hover:text-blue-400">{tag}</a></p>
+            ))}
+
+            <a href="/discog" class="hover:text-blue-400">genre selection</a>
+        </p>
+         <p><a href="/discog/all" class="hover:text-blue-400">all releases</a></p>
+        </div>
+    </div>
+</div>

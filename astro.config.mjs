@@ -45,7 +45,7 @@ export default defineConfig({
         name: 'sheet-parser',
         transform(code, id) {
           if (id.endsWith('.numbers') || id.endsWith('.xlsx') || id.endsWith('.xls') || id.endsWith('.xlsb')) {
-            console.log('Parsing sheet', id);
+            //console.log('Parsing sheet', id);
             const workbook = XLSX.read(readFileSync(id));
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const sheetData = XLSX.utils.sheet_to_json(sheet, { header: 0 });
