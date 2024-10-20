@@ -11,7 +11,6 @@ export async function getStaticPaths() {
   const uniqueTags = new Set();
 
   discographyData.forEach(record => {
-    console.log(record);
     if (record.tags) {
       const tags = record.tags.split(',');
       tags.forEach(tag => uniqueTags.add(tag.trim()));

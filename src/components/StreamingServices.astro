@@ -2,7 +2,6 @@
 import ServiceIconLink from "./atoms/ServiceIconLink.astro";
 import ServicesData from '../assets/lib/servicesData';
 
-let iconPath = "../../assets/icons/";
 let services = ServicesData.filter(service => service.type == 'music');
 ---
 
@@ -17,7 +16,7 @@ let services = ServicesData.filter(service => service.type == 'music');
         services.map((service) => (
           <ServiceIconLink
             serviceName={service.name}
-            serviceIconPath={iconPath + service.icon}
+            serviceIconPath={service.icon}
             serviceUrl={service.url}
           />
         ))
