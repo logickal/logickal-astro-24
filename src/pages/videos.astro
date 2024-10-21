@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro'
 import Prose from '../components/Prose.astro'
 import { YouTube } from 'astro-embed'
 import Header1 from '../components/atoms/headers/Header1.astro'
+import ContentContainer from '../components/atoms/ContentContainer.astro'
 
 ---
 
 <Layout title='Logickal - Videos'>
-    <div class="flex flex-col items-center justify-center">
-		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center ">
-            <div class="m-16 p-5">
+    <ContentContainer bgType="dark">
+        <div class="m-16 p-5">
             <Header1>Videos</Header1>
             <p>Logickal streams live performances and other musical content semi-regularly on Twitch and publishes content regularly to YouTube.</p>
             <ul>
@@ -26,10 +26,22 @@ import Header1 from '../components/atoms/headers/Header1.astro'
                 <YouTube id="https://youtu.be/yt1TqI0IKDg" />
 
             </div>
+    <div class="m-16 p-5">
+            <Header1>Videos</Header1>
+            <p>Logickal streams live performances and other musical content semi-regularly on Twitch and publishes content regularly to YouTube.</p>
+            <ul>
+                <li>
 
-
+                </li>
+            </ul>
+            <p>Visit <a href="https://twitch.tv/logickal_musick" target="_blank" class="text-gray-400 hover:text-blue-400">logickal_musick on twitch.tv</a></p>
+            <p>Subscribe to the Logickal Musick YouTube channel</p>
         </div>
+        <div class="m-16 p-5">
+            <h3 class="font-mono text-lg my-5">selected videos</h3>
+            <div class="m-10 p-5">
+                <YouTube id="https://youtu.be/yt1TqI0IKDg" />
 
-
-    </div>
+            </div>
+    </ContentContainer>
 </Layout>

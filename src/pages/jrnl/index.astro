@@ -1,9 +1,10 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import Header1 from '../../components/atoms/headers/Header1.astro'
-import Header2 from '../../components/atoms/headers/Header2.astro'
-import { sanityClient } from 'sanity:client'
-import BlogCard from '../../components/BlogCard.astro'
+import Layout from "../../layouts/Layout.astro";
+import Header1 from "../../components/atoms/headers/Header1.astro";
+import Header2 from "../../components/atoms/headers/Header2.astro";
+import { sanityClient } from "sanity:client";
+import BlogCard from "../../components/BlogCard.astro";
+import ContentContainer from "../../components/atoms/ContentContainer.astro";
 
 const query = `*[_type == "post"] | order(_createdAt desc) {
     title,
@@ -13,24 +14,20 @@ const query = `*[_type == "post"] | order(_createdAt desc) {
     categories[]->{
         title
     }
-}`
+}`;
 
 const blogPosts = await sanityClient.fetch(query);
-
 ---
 
 <Layout title="Logickal - Journal">
-    <div class="flex flex-col items-center justify-center">
-		<div class="w-9/12 p-32 bg-gray-800  text-gray-600 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
-            <div class="mb-5"> 
-            <Header1>JRNL</Header1>
-            <Header2>thoughts and words</Header2>
-             </div>
-             <div class="grid grid-cols-1">
-                {blogPosts.map(post => (
-                    <BlogCard key={post._id} post={post} />
-                ))}
-            </div>
-         </div>
+  <ContentContainer bgType="dark">
+    <div class="mb-5">
+      <Header1>JRNL</Header1>
+      <Header2>thoughts and words</Header2>
     </div>
-</Layout>   
+    <div class="grid grid-cols-1">
+      {blogPosts.map((post) => <BlogCard key={post._id} post={post} />)}
+    </div>
+  </ContentContainer>
+</Layout>
+

@@ -1,55 +1,54 @@
 ---
-import { loadQuery } from '../../sanity/lib/load-query.js'
-import LayoutShort from '../../layouts/LayoutShort.astro'
-import Header1 from '../../components/atoms/headers/Header1.astro'
-import Header2 from '../../components/atoms/headers/Header2.astro'
-import { sanityClient } from 'sanity:client'
-import { PortableText } from 'astro-portabletext'
-import { List } from 'astro-portabletext/components'
-import Prose from '../../components/Prose.astro'
-import FormattedDate from '../../components/atoms/FormattedDate.astro'
-import BlogImage from '../../components/portabletext/BlogImage.astro'
+import { loadQuery } from "../../sanity/lib/load-query.js";
+import LayoutShort from "../../layouts/LayoutShort.astro";
+import Header1 from "../../components/atoms/headers/Header1.astro";
+import Header2 from "../../components/atoms/headers/Header2.astro";
+import { sanityClient } from "sanity:client";
+import { PortableText } from "astro-portabletext";
+import { List } from "astro-portabletext/components";
+import Prose from "../../components/Prose.astro";
+import FormattedDate from "../../components/atoms/FormattedDate.astro";
+import BlogImage from "../../components/portabletext/BlogImage.astro";
+import ContentContainer from "../../components/atoms/ContentContainer.astro";
 
 export async function getStaticPaths() {
-    const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug.current)]`);
+  const posts = await sanityClient.fetch(
+    `*[_type == "post" && defined(slug.current)]`
+  );
 
-    return posts.map((post) => ({
-        params: { slug: post.slug.current },
-    }));
+  return posts.map((post) => ({
+    params: { slug: post.slug.current },
+  }));
 }
 
 const { slug } = Astro.params;
 
-const { title, body, _createdAt, categories } = await sanityClient.fetch(`*[_type == "post" && slug.current == $slug][0]`, { slug });
-
+const { title, body, _createdAt, categories } = await sanityClient.fetch(
+  `*[_type == "post" && slug.current == $slug][0]`,
+  { slug }
+);
 
 const components = {
-    list: List,
-    type: {
-        image: BlogImage,
-    }
+  list: List,
+  type: {
+    image: BlogImage,
+  },
 };
-
-
 ---
 
 <LayoutShort title="Logickal - JRNL">
-    <div class="flex flex-col items-center justify-center">
-		<div class="w-9/12 p-32 bg-gray-800  text-gray-800 bg-gradient-to-b from-black min-h-screen mb-5 text-center">
-            <div class="mb-5">   
-                <Header1>JRNL</Header1>
-                <Header2>{title}</Header2>
-                <div>
-                    <FormattedDate type="light" discogDate={_createdAt} />
-                </div>
-    
-            </div>
-            <div class="text-gray-400 text-sm text-left">
-                <Prose extraClasses="prose-a:text-blue-600 prose-a:hover:text-blue-300">
-                    <PortableText value={body} components={components} />
-
-                </Prose>
-
-            </div>
-        </div>
-  </div>
+  <ContentContainer bgType="dark">
+    <div class="mb-5">
+      <Header1>JRNL</Header1>
+      <Header2>{title}</Header2>
+      <div>
+        <FormattedDate type="light" discogDate={_createdAt} />
+      </div>
+    </div>
+    <div class="text-gray-400 text-sm text-left">
+      <Prose extraClasses="prose-a:text-blue-600 prose-a:hover:text-blue-300">
+        <PortableText value={body} components={components} />
+      </Prose>
+    </div>
+  </ContentContainer>
+</LayoutShort>

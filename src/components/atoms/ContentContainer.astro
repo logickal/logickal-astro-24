@@ -1,0 +1,26 @@
+---
+let { bgType, extraClasses = ""} = Astro.props;
+let bgColor = null;
+let textColor = null;
+
+if (bgType === 'light') {
+    bgColor = 'bg-gray-200';
+    textColor = 'text-gray-800';
+} 
+else if(bgType === 'transparent') {
+    bgColor = 'bg-gray-800/75';
+    textColor = 'text-gray-600';
+}
+else {
+    bgColor = 'bg-gray-800';
+    textColor = 'text-gray-600';
+}
+
+let classes = "w-9/12 p-32 bg-gradient-to-b from-black min-h-screen mb-5 text-center " + bgColor + " " + textColor + " " + extraClasses;
+---
+
+<div class="flex flex-col items-center justify-center">
+    <div class={classes}>
+        <slot />
+    </div>
+</div>
