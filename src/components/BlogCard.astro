@@ -14,12 +14,12 @@ const truncatedBody = truncatePortableText(post.body, 1);
 
 
 ---
-<a href=`/jrnl/${post.slug.current}`>
-    <div class="group p-5 bg-gray-800 text-gray-600 bg-gradient-to-b from-black border border-gray-600 hover:border-blue-600 rounded-md ">
+<a href=`/jrnl/${post.slug.current}` class="my-5">
+    <div class="group p-5 bg-gray-900 bg-gradient-to-b from-black text-gray-600 border border-gray-600 hover:border-blue-600 rounded-md">
         <Header2>{post.title}</Header2>
         <FormattedDate discogDate={post._createdAt} />
-        <div class="justify-center mx-auto">
-            <Prose extraClasses="text-xs font-mono w-full">
+        <div class="mt-5">
+            <Prose extraClasses="text-xs font-mono w-full mx-auto justify-center">
                 <PortableText value={truncatedBody} />
                 <div class="text-blue-400 group-hover:text-blue-600">read more...</div>
             </Prose>
