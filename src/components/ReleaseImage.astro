@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
 
-const { image } = Astro.props;
+const { image, alt } = Astro.props;
 ---
-<div>
-    <Image src={ image } alt="album cover" class="object-cover w-4/5" />
+<div class="flex justify-center items-center mb-10">
+    <Image src={ image } alt={alt} class="object-cover w-4/5 border border-yellow-100/30" width={500}/>
 </div>

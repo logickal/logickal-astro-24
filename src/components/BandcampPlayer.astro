@@ -4,6 +4,6 @@ const { id, url, title} = Astro.props;
 
 ---
 
-<div>
-    <iframe style={`border: 0; width: 400px; height: 241px;`} src={`https://bandcamp.com/EmbeddedPlayer/album=${id}/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/`} seamless><a href={`${url}`}>{title} by Logickal</a></iframe>
+<div class="flex justify-center items-center">
+    <iframe style={`border: 0; width: 400px; height: 241px;`} class="" src={`https://bandcamp.com/EmbeddedPlayer/album=${id}/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/`} seamless><a href={`${url}`}>{title} by Logickal</a></iframe>
 </div>
