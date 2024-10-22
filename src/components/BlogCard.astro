@@ -18,9 +18,11 @@ const truncatedBody = truncatePortableText(post.body, 1);
     <div class="group p-5 bg-gray-800 text-gray-600 bg-gradient-to-b from-black border border-gray-600 hover:border-blue-600 rounded-md ">
         <Header2>{post.title}</Header2>
         <FormattedDate discogDate={post._createdAt} />
-        <Prose class="text-sm">
-            <PortableText value={truncatedBody} />
-            <div class="text-blue-400 group-hover:text-blue-600">read more...</div>
-        </Prose>
+        <div class="justify-center mx-auto">
+            <Prose extraClasses="text-xs font-mono w-full">
+                <PortableText value={truncatedBody} />
+                <div class="text-blue-400 group-hover:text-blue-600">read more...</div>
+            </Prose>
+     </div>
     </div>
 </a>
