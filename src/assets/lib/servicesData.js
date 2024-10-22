@@ -56,35 +56,35 @@ let ServicesData = [
     },
     {
         name: "Facebook",
-        icon: "icons8-facebook.svg",
-        url: "https://www.facebook.com/logickal",
+        icon: "icons8-facebook-23.svg",
+        url: "https://www.facebook.com/logickalmusick",
         type: 'social',
         dataName: 'facebook'
     },
     {
         name: "Instagram",
-        icon: "icons8-instagram.svg",
+        icon: "icons8-instagram-23.svg",
         url: "https://www.instagram.com/logickal",
         type: 'social',
         dataName: 'instagram'
     },
     {
         name: 'Mastodon',
-        icon: 'icons8-mastodon.svg',
-        url: 'https://mastodon.social/@logickal',
+        icon: 'icons8-mastodon-23.svg',
+        url: 'https://ravenation.club/@logickal',
         type: 'social',
         dataName: 'mastodon'
     }, 
     {
         name: "YouTube",
-        icon: "icons8-youtube.svg",
-        url: "https://www.youtube.com/channel/UCtewbGbrBYnVVfyQcn89GeQ",
+        icon: "icons8-youtube-23.svg",
+        url: "https://www.youtube.com/@logickalmusick",
         type: 'social',
         dataName: 'youtube'
     },
     {
         name: "Twitch",
-        icon: "icons8-twitch.svg",
+        icon: "icons8-twitch-23.svg",
         url: "https://www.twitch.tv/logickal_musick",
         type: 'social',
         dataName: 'twitch'
