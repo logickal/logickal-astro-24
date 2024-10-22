@@ -16,12 +16,46 @@ const latestRelease = discographyData[0];
 <Layout title="Logickal Electronic Music.">
   <div>
     <div class="flex flex-col items-center justify-center">
-		<HomeTitle />
-    <LatestRelease latestRelease={latestRelease} />
-    <StreamingServices />
-    <HomeNav />
-    <AMAmember />  
+      <HomeTitle />
+      <div
+        class="opacity-0 animate-duration-[1500ms] animate-ease-linear intersect-full"
+      >
+        <LatestRelease latestRelease={latestRelease} />
+      </div>
+      <div
+        class="opacity-0 animate-duration-[1500ms] animate-ease-linear intersect-full"
+      >
+        <StreamingServices />
+      </div>
+      <div
+        class="opacity-0 animate-duration-[1500ms] animate-ease-linear intersect-full w-full"
+      >
+        <HomeNav />
+      </div>
+      <div
+        class="opacity-0 animate-duration-[1500ms] animate-ease-linear intersect-full w-full"
+      >
+        <AMAmember />
+      </div>
     </div>
-
   </div>
 </Layout>
+
+<script>
+  import { useIntersectionObserver } from "../assets/lib/intersectionObserver";
+
+  function handleIntersection(element) {
+    console.log("Element is intersecting", element);
+    element.classList.remove("opacity-0");
+    element.classList.add("animate-fade");
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(".intersect-full");
+    elements.forEach((element) => {
+      useIntersectionObserver(element, handleIntersection, {
+        threshold: 0.1, // Adjust this value as needed
+      });
+    });
+  });
+</script>

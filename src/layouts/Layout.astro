@@ -1,56 +1,60 @@
 ---
-import {  Head } from 'astro-capo';
-import { SEOMetadata } from 'astro-seo-metadata';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { Image } from 'astro:assets';
-import backgroundImage from '../assets/imgBg/riso-bg-lg.jpg';
-import { ViewTransitions } from 'astro:transitions';
-
+import { Head } from "astro-capo";
+import { SEOMetadata } from "astro-seo-metadata";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+import backgroundImage from "../assets/imgBg/riso-bg-lg.jpg";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
-	title: string;
+  title: string;
 }
 const { title } = Astro.props;
 ---
 
 <script>
-	import SimpleParallax from 'simple-parallax-js/vanilla';
-	var image = document.getElementsByClassName('parallax-img');
-	new SimpleParallax(image, {scale:1.8});
+  import SimpleParallax from "simple-parallax-js/vanilla";
+  import { Observer } from "tailwindcss-intersect";
+
+  Observer.start();
+  var image = document.getElementsByClassName("parallax-img");
+  new SimpleParallax(image, { scale: 1.8 });
 </script>
 
-<!doctype html>
 <html lang="en" class="text-gray-400">
-	<Head>
-		<SEOMetadata 
-			title={title}
-			description="Logickal Music - Esoteric electronic music from Nashville, TN."
-			author='Jeremy Dickens'
-			astroSitemap={true}
-			astroGenerator={true}
-		/>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<ViewTransitions />
-	</Head>
-	<body class="font-sans text-zinc-500 bg-gray-900">
-		<div class="w-full min-h-screen relative ">
-			<div class="absolute inset-0 z-0">
-					<Image src={backgroundImage} alt="background image" class="parallax-img w-full h-full object-cover" height={6000} />
-			</div>
-			<div class="relative z-10">
-				<Header />
-				<main class="m-auto">
-				<slot />
-				</main>
-				<Footer />
-
-			</div>
-	
-		</div>
-
-
-	</body>
+  <Head>
+    <SEOMetadata
+      title={title}
+      description="Logickal Music - Esoteric electronic music from Nashville, TN."
+      author="Jeremy Dickens"
+      astroSitemap={true}
+      astroGenerator={true}
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ViewTransitions />
+  </Head>
+  <body class="font-sans text-zinc-500 bg-gray-900">
+    <div class="w-full min-h-screen relative">
+      <div class="absolute inset-0 z-0">
+        <Image
+          src={backgroundImage}
+          alt="background image"
+          class="parallax-img w-full h-full object-cover"
+          height={6000}
+        />
+      </div>
+      <div class="relative z-10">
+        <Header />
+        <main class="m-auto">
+          <slot />
+        </main>
+        <div class="absolute bottom-0">
+          <Footer />
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
