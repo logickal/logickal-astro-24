@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import backgroundImage from '../assets/imgBg/riso-bg-lg.jpg';
+import { ViewTransitions } from 'astro:transitions';
 
 
 interface Props {
@@ -32,6 +33,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<ViewTransitions />
 	</Head>
 	<body class="font-sans text-zinc-500 bg-gray-900">
 		<div class="w-full min-h-screen relative ">
