@@ -3,10 +3,35 @@
 ---
 
 <div
-  class="content-center text-center w-9/12 bg-gradient-to-t from-gray-800 min-h-screen mt-10 rounded-lg animate-fade animate-duration-[5000ms] animate-ease-linear"
+  class="content-center text-center w-9/12 bg-gradient-to-t from-gray-800 min-h-screen mt-10 rounded-lg opacity-0 "
+  id="home-title"
 >
-  <div class="bg-black h-2/5">
-    <h1 class="text-4xl font-mono">logickal</h1>
-    <h3 class="text-xl font-sans animate-fade animate-duration-[5000ms] animate-delay-[3000ms] animate-ease-linear">eclectic electronic musick</h3>
+  <div class="bg-black h-3/5 py-8">
+    <h1 class="text-4xl font-mono opacity-0" id="title">logickal</h1>
+    <h3 class="text-xl font-sans opacity-0" id="subtitle">eclectic electronic musick</h3>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const img = document.getElementById('parallax-bg');
+    const hero = document.getElementById('home-title');
+    const title = document.getElementById('title');
+    const subtitle = document.getElementById('subtitle');
+
+    function addAnimationClasses() {
+      hero.classList.add('animate-fade', 'animate-duration-[5000ms]', 'animate-ease-linear');
+      hero.classList.remove('opacity-0');
+      title.classList.add('animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[1500ms]', 'animate-ease-linear');
+      title.classList.remove('opacity-0');
+      subtitle.classList.add('animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[3500ms]', 'animate-ease-linear');
+      subtitle.classList.remove('opacity-0')
+    }
+
+    if (img.complete) {
+      addAnimationClasses();
+    } else {
+      img.addEventListener('load', addAnimationClasses);
+    }
+  });
+  </script>
