@@ -18,14 +18,16 @@
     const hero = document.getElementById('home-title');
     const title = document.getElementById('title');
     const subtitle = document.getElementById('subtitle');
+    
+    function addRemoveClasses(item, addClasses) {
+      item.classList.add(...addClasses);
+      item.classList.remove('opacity-0');
+    }
 
     function addAnimationClasses() {
-      hero.classList.add('animate-fade', 'animate-duration-[5000ms]', 'animate-ease-linear');
-      hero.classList.remove('opacity-0');
-      title.classList.add('animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[1500ms]', 'animate-ease-linear');
-      title.classList.remove('opacity-0');
-      subtitle.classList.add('animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[3500ms]', 'animate-ease-linear');
-      subtitle.classList.remove('opacity-0')
+      addRemoveClasses(hero, ['animate-fade', 'animate-duration-[5000ms]', 'animate-ease-linear']);
+      addRemoveClasses(title, ['animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[1500ms]', 'animate-ease-linear']);
+      addRemoveClasses(subtitle, ['animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[3500ms]', 'animate-ease-linear']);
     }
 
     if (img.complete) {
