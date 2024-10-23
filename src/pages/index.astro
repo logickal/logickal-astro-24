@@ -50,12 +50,15 @@ const latestRelease = discographyData[0];
     element.classList.add("animate-fade");
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  function intersectionListener() {
     const elements = document.querySelectorAll(".intersect-full");
     elements.forEach((element) => {
       useIntersectionObserver(element, handleIntersection, {
         threshold: 0.1, // Adjust this value as needed
       });
     });
-  });
+  }
+
+  document.addEventListener("DOMContentLoaded", intersectionListener);
+  document.addEventListener("astro:after-swap", intersectionListener);
 </script>

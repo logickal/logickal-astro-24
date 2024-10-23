@@ -17,11 +17,13 @@ const { title } = Astro.props;
   import SimpleParallax from "simple-parallax-js/vanilla";
 
   document.addEventListener('DOMContentLoaded', () => {
+	console.log("DOMContentLoaded");
     var image = document.getElementsByClassName("parallax-img");
     new SimpleParallax(image, { scale: 1.8 });
   });
 
   document.addEventListener('astro:after-swap', () => {
+	console.log("astro:after-swap");
     var image = document.getElementsByClassName("parallax-img");
     new SimpleParallax(image, { scale: 1.8 });
   });

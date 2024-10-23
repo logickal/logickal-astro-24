@@ -13,7 +13,8 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
+  
+  function animationEventListener() {
     const img = document.getElementById('parallax-bg');
     const hero = document.getElementById('home-title');
     const title = document.getElementById('title');
@@ -35,5 +36,9 @@
     } else {
       img.addEventListener('load', addAnimationClasses);
     }
-  });
+  }
+  
+  document.addEventListener('DOMContentLoaded', animationEventListener);
+  document.addEventListener('astro:after-swap', animationEventListener);
+
   </script>
