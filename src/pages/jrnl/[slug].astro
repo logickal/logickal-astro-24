@@ -10,6 +10,7 @@ import Prose from "../../components/Prose.astro";
 import FormattedDate from "../../components/atoms/FormattedDate.astro";
 import BlogImage from "../../components/portabletext/BlogImage.astro";
 import ContentContainer from "../../components/atoms/ContentContainer.astro";
+import BlogPreviousNext from "../../components/BlogPreviousNext.astro";
 
 export async function getStaticPaths() {
   const posts = await sanityClient.fetch(
@@ -23,9 +24,27 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-const { title, body, _createdAt, categories } = await sanityClient.fetch(
-  `*[_type == "post" && slug.current == $slug][0]`,
-  { slug }
+const query = `*[_type == "post" && slug.current == $slug][0] {
+    "current": {  
+        title,
+        body,
+     _createdAt,
+        categories
+    },
+    "previous": *[_type == "post" && _createdAt < ^._createdAt] | order(_createdAt desc) [0] {
+    title,
+    slug
+    },
+    "next": *[_type == "post" && _createdAt > ^._createdAt] | order(_createdAt asc) [0] {
+    title,
+    slug
+    }
+}`;
+
+// title, body, _createdAt, categories
+const { current, previous, next } = await sanityClient.fetch(
+    query,   
+    { slug }
 );
 
 const components = {
@@ -34,6 +53,15 @@ const components = {
     image: BlogImage,
   },
 };
+
+const { title, body, _createdAt, categories } = current;
+
+// Initialize variables with optional chaining and nullish coalescing
+const prevTitle = previous?.title ?? null;
+const prevSlug = previous?.slug.current ?? null;
+const nextTitle = next?.title ?? null;
+const nextSlug = next?.slug.current ?? null;
+
 ---
 
 <LayoutShort title="Logickal - JRNL">
@@ -50,5 +78,13 @@ const components = {
         <PortableText value={body} components={components} />
       </Prose>
     </div>
+    <div>
+        {categories.map((category) => (
+            <p><a href={`/jrnl/${category.slug}`}>{category.title}</a>
+            </p>
+        ))}
+    </div>
+
+    <BlogPreviousNext previous={previous} next={next} />
   </ContentContainer>
 </LayoutShort>

@@ -1,0 +1,41 @@
+---
+let { previous = null, next = null } = Astro.props;
+
+const prevTitle = previous?.title ?? null;
+const prevSlug = previous?.slug.current ?? null;
+const nextTitle = next?.title ?? null;
+const nextSlug = next?.slug.current ?? null;
+
+
+---
+
+<div class="flex mt-10">
+    <div class="w-1/2">
+
+    {
+        previous && ( <a href={`/jrnl/${prevSlug}`} class="text-yellow-100 hover:text-yellow-200">
+            <div class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+                <span class="ml-2">{prevTitle}</span>
+            </div>
+        </a>)
+    }
+    </div>
+
+    <div class="w-1/2 text-right">
+        { 
+        next && (
+        <a href={`/jrnl/${nextSlug}`} class="text-yellow-100 hover:text-yellow-200">
+            <div class="flex items-center justify-end">
+                <span class="mr-2">{nextTitle}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </div>
+        </a>
+        )}
+
+    </div>
+</div>
