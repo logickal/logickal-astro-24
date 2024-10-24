@@ -12,6 +12,7 @@ import BlogImage from "../../components/portabletext/BlogImage.astro";
 import ContentContainer from "../../components/atoms/ContentContainer.astro";
 import BlogPreviousNext from "../../components/BlogPreviousNext.astro";
 import BlogCategories from "../../components/BlogCategories.astro";
+import SanityImage from "../../components/atoms/SanityImage.astro";
 
 export async function getStaticPaths() {
   const posts = await sanityClient.fetch(
@@ -29,6 +30,7 @@ const query = `*[_type == "post" && slug.current == $slug][0] {
     "current": {  
         title,
         body,
+        mainImage,
      _createdAt,
         "categories": categories[]->{
         "title": title,
@@ -58,7 +60,7 @@ const components = {
   },
 };
 
-const { title, body, _createdAt, categories } = current;
+const { title, body, _createdAt, mainImage, categories } = current;
 
 // Initialize variables with optional chaining and nullish coalescing
 const prevTitle = previous?.title ?? null;
@@ -80,6 +82,9 @@ console.log(categories);
       </div>
       <div>
         <BlogCategories categories={categories} />
+    </div>
+    <div>
+      {mainImage && <SanityImage node={mainImage} width={960} />}
     </div>
     <div class="text-gray-400 text-sm text-left">
       <Prose extraClasses="prose-a:text-blue-600 prose-a:hover:text-blue-300">

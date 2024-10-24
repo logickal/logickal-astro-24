@@ -9,6 +9,7 @@ import ContentContainer from "../../components/atoms/ContentContainer.astro";
 const query = `*[_type == "post"] | order(_createdAt desc) {
     title,
     slug,
+    mainImage,
     _createdAt,
     body,
     categories[]->{

@@ -4,6 +4,7 @@ import FormattedDate from './atoms/FormattedDate.astro'
 import { PortableText } from 'astro-portabletext'
 import Prose from './Prose.astro'
 import BlogCategories from './BlogCategories.astro'
+import SanityThumbnail from './atoms/SanityThumbnail.astro'
 
 const { key, post } = Astro.props;
 
@@ -14,15 +15,19 @@ function truncatePortableText(content, maxBlocks = 1) {
 
 const truncatedBody = truncatePortableText(post.body, 1);
 
-console.log(post);
-
-
 ---
-<a href=`/jrnl/${post.slug.current}` class="my-5">
+<a href=`/jrnl/${post.slug.current}` class="block my-5">
     <div class="group p-5 bg-gray-900 bg-gradient-to-b from-black text-gray-600 border border-gray-600 hover:border-blue-600 rounded-md">
-        <Header2>{post.title}</Header2>
-        <FormattedDate discogDate={post._createdAt} />
-        <BlogCategories categories={post.categories} />
+        <div class="flex flex-col md:flex-row justify-between gap-4">
+            <div class="flex-1 text-left">
+                <Header2>{post.title}</Header2>
+                <FormattedDate discogDate={post._createdAt} />
+                <BlogCategories categories={post.categories} link={false} />
+            </div>
+            <div class="flex justify-end items-center flex-1">
+                {post.mainImage && <SanityThumbnail node={post.mainImage}/> }
+            </div>
+        </div>
         <div class="mt-5">
             <Prose extraClasses="text-xs font-mono w-full mx-auto justify-center">
                 <PortableText value={truncatedBody} />
