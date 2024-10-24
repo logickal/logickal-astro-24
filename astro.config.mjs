@@ -6,6 +6,8 @@ import tailwind from "@astrojs/tailwind";
 import * as XLSX from 'xlsx';
 import mdx from "@astrojs/mdx";
 import favicons from "astro-favicons";
+import { partytown } from "astro/config";
+
 
 
 function excelDateToJSDate(serial) {
@@ -48,7 +50,8 @@ export default defineConfig({
     mdx(), 
     sanity(sanityConf), 
     react(),
-    favicons(faviconsConfig)
+    favicons(faviconsConfig),
+    partytown({ config: { forward: ["dataLayer.push"] } })
   
   ],
   vite: {
