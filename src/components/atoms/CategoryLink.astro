@@ -1,6 +1,8 @@
 ---
+import CategoryText from './CategoryText.astro';
+
 let { title, slug } = Astro.props;
 
 ---
 
-<a href=`/jrnl/category/${slug}` class="text-xs  hover:text-yellow-300">{title}</a>
+<a href=`/jrnl/category/${slug}`><CategoryText title={title}/></a>

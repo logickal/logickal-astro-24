@@ -1,11 +1,17 @@
 ---
-import CategoriesLink from "./atoms/CategoryLink.astro";
-let { categories } = Astro.props;
+import CategoryText from "./atoms/CategoryText.astro";
+import CategoryLink from "./atoms/CategoryLink.astro";
+
+let { categories, link=true } = Astro.props;
 
 ---
 
 <div class="text-yellow-200 text-xs font-mono mb-5">
     Categories: {categories && categories.map((category) => {
-        return <CategoriesLink title={category.title} slug={category.slug} />
+        if (link) {
+            return <CategoryLink title={category.title} slug={category.slug} />
+        } else {
+            return <CategoryText title={category.title} />
+        }
     })}
 </div>
