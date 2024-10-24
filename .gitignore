@@ -26,3 +26,8 @@ pnpm-debug.log*
 src/assets/imgsrc/
 
 src/assets/option-images/
+
+# favicon stuff
+public/favicon*
+public/browserconfig.xml
+public/
