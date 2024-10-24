@@ -1,21 +1,24 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import LayoutShort from '../layouts/LayoutShort.astro'
 import Prose from '../components/Prose.astro'
-import { Content as LinksContent } from "../assets/links.md"
+import { Content as LinksContent } from "../assets/links.mdx"
 import Header1 from '../components/atoms/headers/Header1.astro'
 import ContentContainer from '../components/atoms/ContentContainer.astro'
+import ServicesList from '../components/ServicesList.astro'
+
 ---
 
-<Layout title='Logickal - Links'>
+<LayoutShort title='Logickal - Links'>
     <ContentContainer bgType="dark">
             <div class="m-16 p-5">
             <Header1>Links</Header1>
             <p>Here are some additional locations around the web with information and content by/for/about Logickal.</p>
       
             <div class="text-left text-sm">
-                <Prose>
+                <Prose extraClasses="prose-a:text-gray-300 hover:prose-a:text-blue-400">
+                    <ServicesList />
                     <LinksContent />
                 </Prose>
             </div>
     </ContentContainer>
-</Layout>
+</LayoutShort>
