@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import tailwind from "@astrojs/tailwind";
 import * as XLSX from 'xlsx';
 import mdx from "@astrojs/mdx";
-
+import favicons from "astro-favicons";
 
 
 function excelDateToJSDate(serial) {
@@ -27,6 +27,13 @@ function excelDateToJSDate(serial) {
   return new Date(Date.UTC(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds));
 }
 
+const faviconsConfig = {
+  masterPicture: "./src/assets/static-images/logickal-icon.png",
+  emitAssets: true,
+  faviconsDarkMode: true,
+
+}
+
 const sanityConf = {
   projectId: 'zbrphau8',
   dataset: 'production',
@@ -36,7 +43,14 @@ const sanityConf = {
 // https://astro.build/config
 export default defineConfig({
 
-  integrations: [tailwind(), mdx(), sanity(sanityConf), react()],
+  integrations: [
+    tailwind(), 
+    mdx(), 
+    sanity(sanityConf), 
+    react(),
+    favicons(faviconsConfig)
+  
+  ],
   vite: {
     assetsInclude: ['**/*.numbers', '**/*.xlsx', '**/*.xls', '**/*.xlsb'],
 
