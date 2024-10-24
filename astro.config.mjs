@@ -6,7 +6,7 @@ import tailwind from "@astrojs/tailwind";
 import * as XLSX from 'xlsx';
 import mdx from "@astrojs/mdx";
 import favicons from "astro-favicons";
-import { partytown } from "astro/config";
+import partytown from '@astrojs/partytown';
 
 
 
@@ -45,15 +45,7 @@ const sanityConf = {
 // https://astro.build/config
 export default defineConfig({
 
-  integrations: [
-    tailwind(), 
-    mdx(), 
-    sanity(sanityConf), 
-    react(),
-    favicons(faviconsConfig),
-    partytown({ config: { forward: ["dataLayer.push"] } })
-  
-  ],
+  integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown()],
   vite: {
     assetsInclude: ['**/*.numbers', '**/*.xlsx', '**/*.xls', '**/*.xlsb'],
 
