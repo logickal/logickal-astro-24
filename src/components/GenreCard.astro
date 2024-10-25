@@ -19,13 +19,13 @@ const genreText = tagMapping[genre] || genre;
 const genreUrl = genre !== "all" ? `/discog/${genre}` : `/discog/all`;
 
 const classes = aspect === "portrait"
-  ? `m-2 p-3 relative flex-col justify-between hover:scale-110 transition ease-in-out`
-  : `h-1/8 w-3/4 m-2 p-3 relative flex-col justify-between hover:scale-110 transition ease-in-out`;
+  ? `m-2 p-3 relative flex-col justify-between hover:scale-105 transition ease-in-out h-[50vh] md:h-auto`
+  : `m-2 p-3 relative flex-col justify-between hover:scale-105 transition h-[25vh] md:h-autp ease-in-out`;
 ---
 
 <div class={classes}>
-  <a href={genreUrl}>
-    <Image src={images[image]() as Promise<{ default: ImageMetadata; }>} alt={genre} class="object-cover w-full h-full" />
+  <a href={genreUrl} >
+    <Image src={images[image]() as Promise<{ default: ImageMetadata; }>} alt={genre} class="object-cover w-full h-full border-2 border-yellow-200/25" />
     <div class="absolute inset-x-0 bottom-0 px-2 mx-1 py-3 bg-black bg-opacity-50">
       <h3 class="text-lg font-extralight text-gray-300">{genreText}</h3>
     </div>
