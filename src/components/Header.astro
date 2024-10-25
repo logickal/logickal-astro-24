@@ -1,20 +1,27 @@
 ---
 import ServiceIconLink from "./atoms/ServiceIconLink.astro";
 import ServicesData from '../assets/lib/servicesData';
+import HeaderLink from "./atoms/HeaderLink.astro";
 
 let services = ServicesData.filter(service => service.type == 'social');
+
+let links = [
+    {name: 'home', url: '/'},
+    {name: 'discog', url: '/discog'},
+    {name: 'about', url: '/about'},
+    {name: 'jrnl', url: '/jrnl'}
+];
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center p-2 border-b border-gray-800 bg-black">
     <div>
-        <h1 class="font-mono font-bold text-gray-400 hover:text-gray-200 "><a href="/">logickal</a></h1>
+        <h1 class="font-mono font-bold text-xs sm:text-base md:text-lg lg:text-xl text-gray-400 hover:text-gray-200 "><a href="/">logickal</a></h1>
     </div>
     <div>
-        <ul class="font-mono flex space-x-4">
-            <li><a href="/" class="hover:text-blue-500">home</a></li>
-            <li><a href="/discog" class="hover:text-blue-500">music</a></li>
-            <li><a href="/about" class="hover:text-blue-500">about</a></li>
-            <li><a href="/jrnl" class="hover:text-blue-500">jrnl</a></li>
+        <ul class="font-mono flex space-x-4 sm:text-xs md:text-sm lg:text-base">
+            {links.map((link) => (
+                <HeaderLink name={link.name} url={link.url} />
+            ))}
             {services.map((service) => (
                 <ServiceIconLink
                     serviceName={service.name}
