@@ -12,32 +12,22 @@ interface Props {
 
 const { genre, image, color, aspect } = Astro.props;
 const images = import.meta.glob("../assets/imgBg/*");
-let classes = null;
 
 // Set the text and URL for the genre card.
 // The 'all' genre card is a special case and should link to the discography page.
-let genreText = tagMapping[genre] || genre;
-let genreUrl = '/discog';
-if (genre != "all") {
-    genreUrl = `/discog/${genre}`;
-} else {
-    genreUrl = `/discog/all`;
-}
+const genreText = tagMapping[genre] || genre;
+const genreUrl = genre !== "all" ? `/discog/${genre}` : `/discog/all`;
 
-if (aspect == "portrait") {
-    classes = `m-2 p-3 relative flex-col justify-between h-fit hover:scale-110 transition ease-in-out`;
-} else {
-    classes = `relative object-fit h-fit w-1/2 h-3/8 m-2 p-3 object-contain hover:scale-110 transition ease-in-out`;
-
-}
-
+const classes = aspect === "portrait"
+  ? `m-2 p-3 relative flex-col justify-between hover:scale-110 transition ease-in-out`
+  : `h-1/8 w-3/4 m-2 p-3 relative flex-col justify-between hover:scale-110 transition ease-in-out`;
 ---
 
-<div class={ classes }>
-    <a href={ genreUrl }>
-    <Image src={images[image]() as Promise<{ default: ImageMetadata; }>} alt={genre} class="object-cover" />
-    <div class={`absolute inset-x-0 bottom-0 px-2 mx-1 py-3 bg-black bg-opacity-50`}> 
-        <h3 class="text-lg font-extralight">{genreText}</h3>
+<div class={classes}>
+  <a href={genreUrl}>
+    <Image src={images[image]() as Promise<{ default: ImageMetadata; }>} alt={genre} class="object-cover w-full h-full" />
+    <div class="absolute inset-x-0 bottom-0 px-2 mx-1 py-3 bg-black bg-opacity-50">
+      <h3 class="text-lg font-extralight text-gray-300">{genreText}</h3>
     </div>
-    </a>
+  </a>
 </div>
