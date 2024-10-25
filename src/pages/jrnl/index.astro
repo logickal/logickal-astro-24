@@ -22,12 +22,15 @@ const blogPosts = await sanityClient.fetch(query);
 
 <Layout title="Logickal - Journal">
   <ContentContainer bgType="dark">
-    <div class="mb-5">
+    <div class="mb-5 mt-16">
       <Header1>JRNL</Header1>
       <Header2>thoughts and words</Header2>
     </div>
-    <div class="grid grid-cols-1">
-      {blogPosts.map((post) => <BlogCard key={post._id} post={post} />)}
+    <div class="flex justify-center items-center">
+      <div class="grid grid-cols-1 justify-center items-center">
+        {blogPosts.map((post) => <BlogCard key={post._id} post={post} />)}
+
+      </div>
     </div>
   </ContentContainer>
 </Layout>

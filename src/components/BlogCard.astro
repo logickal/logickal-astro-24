@@ -16,8 +16,8 @@ function truncatePortableText(content, maxBlocks = 1) {
 const truncatedBody = truncatePortableText(post.body, 1);
 ---
 
-<a href={`/jrnl/${post.slug.current}`} class="block my-5">
-    <div class="relative group p-5 bg-gray-900 bg-gradient-to-b from-black text-gray-600 border border-gray-600 hover:border-blue-600 rounded-md">
+<a href={`/jrnl/${post.slug.current}`} class="block my-5 mx-auto">
+    <div class="relative w-full md:w-9/12 group p-5 bg-gray-900 bg-gradient-to-b from-black text-gray-600 border border-gray-600 hover:border-blue-600 rounded-md mx-auto">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-blue-500 opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-md"></div>
         
