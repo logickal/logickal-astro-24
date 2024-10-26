@@ -6,10 +6,7 @@ import React from 'react'
 import YouTubePlayer from 'react-player/youtube'
 
 export function YouTubePreview(props: PreviewProps) {
-  console.log('Props: ', props)
   const {title: url} = props || {}
-
-  console.log('URL: ', url);
 
   return (
     <ThemeProvider theme={studioTheme}>
