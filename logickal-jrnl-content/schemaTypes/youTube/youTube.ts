@@ -2,7 +2,7 @@
 
 import {defineType, defineField} from 'sanity'
 import {PlayIcon} from '@sanity/icons'
-import {YouTubePreview} from './youTubePreview'
+import {YouTubePreview} from './YouTubePreview'
 
 export const youTube = defineType({
     name: 'youTube',
