@@ -14,6 +14,7 @@ import ContentContainer from "../../components/atoms/ContentContainer.astro";
 import BlogPreviousNext from "../../components/BlogPreviousNext.astro";
 import BlogCategories from "../../components/BlogCategories.astro";
 import SanityImage from "../../components/atoms/SanityImage.astro";
+import AstroYouTube from "../../components/portabletext/AstroYouTube.astro";
 
 export async function getStaticPaths() {
   const posts = await sanityClient.fetch(
@@ -58,7 +59,7 @@ const components = {
   list: List,
   type: {
     image: BlogImage,
-    youTube: YouTubeEmbed
+    youTube: AstroYouTube,
   },
 };
 

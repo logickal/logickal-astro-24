@@ -1,0 +1,9 @@
+---
+import { YouTube } from 'astro-embed';
+
+let { node } = Astro.props;
+console.log(node);
+
+---
+
+    <YouTube id={node.url} class="mx-auto"/>
