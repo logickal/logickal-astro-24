@@ -2,7 +2,17 @@
 import CategoryText from "./atoms/CategoryText.astro";
 import CategoryLink from "./atoms/CategoryLink.astro";
 
+interface Props {
+    categories: { title: string; slug: string }[];
+    link?: boolean;
+}
+
 let { categories, link=true } = Astro.props;
+if (!categories) {
+    link = false;
+}
+
+console.log(categories);
 
 console.log(categories);
 ---
@@ -10,8 +20,8 @@ console.log(categories);
 <div class="text-yellow-200 text-xs font-mono mb-5">
     {categories.map((category, index) => (
         <span>
-        <CategoryLink title={category.title} slug={category.slug} />
-        {index < categories.length - 1 && <span> / </span>}
+        {link ? <CategoryLink title={category.title} slug={category.slug} /> : <CategoryText title={category.title} />}
+         {index < categories.length - 1 && <span> / </span>}
         </span>
     ))}
 </div>

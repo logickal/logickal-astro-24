@@ -1,4 +1,9 @@
 ---
+interface Props {
+    bgType: string;
+    extraClasses?: string;
+}
+
 let { bgType, extraClasses = ""} = Astro.props;
 let bgColor = null;
 let textColor = null;

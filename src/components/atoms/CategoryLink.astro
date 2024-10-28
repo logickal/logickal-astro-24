@@ -1,6 +1,11 @@
 ---
 import CategoryText from './CategoryText.astro';
 
+interface Props {
+    title: string;
+    slug: string;
+}
+
 let { title, slug } = Astro.props;
 
 ---
