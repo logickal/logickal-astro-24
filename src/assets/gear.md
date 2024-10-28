@@ -17,3 +17,6 @@ title: 'Equipment'
 ### Control Surfaces / Sequencers
 * Torso T-1
 * Arturia Keystep Pro
+
+### Modular Synthesis
+![Logickal's 2024 Modulargrid](https://cdn.modulargrid.net/img/racks/modulargrid_2573080.jpg)
