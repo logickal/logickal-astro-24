@@ -11,6 +11,11 @@ import partytown from '@astrojs/partytown';
 
 
 function excelDateToJSDate(serial) {
+
+  if (typeof serial === 'object') {
+    return new Date(serial);
+  }
+  
   const utc_days = Math.floor(serial - 25569);
   const utc_value = utc_days * 86400;
   const date_info = new Date(utc_value * 1000);
@@ -25,6 +30,7 @@ function excelDateToJSDate(serial) {
 
   const hours = Math.floor(total_seconds / (60 * 60));
   const minutes = Math.floor(total_seconds / 60) % 60;
+
 
   return new Date(Date.UTC(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds));
 }
