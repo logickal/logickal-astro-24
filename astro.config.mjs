@@ -7,7 +7,7 @@ import * as XLSX from 'xlsx';
 import mdx from "@astrojs/mdx";
 import favicons from "astro-favicons";
 import partytown from '@astrojs/partytown';
-
+import sitemap from '@astrojs/sitemap';
 
 
 function excelDateToJSDate(serial) {
@@ -48,10 +48,11 @@ const sanityConf = {
   useCdn: false,
   studioBasePath: '/admin',
 };
+
 // https://astro.build/config
 export default defineConfig({
-
-  integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown()],
+  site: 'https://logickalmusic.com',
+  integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown(), sitemap()],
   vite: {
     assetsInclude: ['**/*.numbers', '**/*.xlsx', '**/*.xls', '**/*.xlsb'],
 
