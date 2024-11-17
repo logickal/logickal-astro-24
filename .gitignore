@@ -30,4 +30,9 @@ src/assets/option-images/
 # favicon stuff
 public/favicon*
 public/browserconfig.xml
-public/
+public/*.webmanifest
+public/android*
+public/apple*
+public/safari*
+public/mstile*
+public/yandex*
