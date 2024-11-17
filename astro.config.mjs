@@ -55,6 +55,26 @@ const sanityConf = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://logickalmusic.com',
+  build: {
+    chunkSizeWarningLimit: 4000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'icons': ['@iconify-json/simple-icons'],
+          'react': ['react', 'react-dom'],
+          'sanity-core': ['@sanity/client'],
+          'sanity-studio': [
+            '@sanity/vision',
+            '@sanity/visual-editing',
+            '@sanity/studio-hints',
+            '@sanity/types',
+            '@sanity/util',
+            '@sanity/validation'
+          ]
+        }
+      }
+    }
+  },
   integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
     {
       include: {

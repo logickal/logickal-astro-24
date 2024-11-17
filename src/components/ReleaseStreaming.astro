@@ -20,21 +20,22 @@ services.forEach(service => {
 });
 
 ---
+
 <div class="bg-gray-500 my-12 p-5 text-center text-black content-center rounded-md border border-yellow-200/25">
-  <h3 class="text-lg font-mono font-bold text-yellow-400">Streaming</h3>
-  <p class="text-sm font-sans italic">
-    Stream <span class="bold">{release.title}</span> on these and other fine services:
-  </p>
-  <div class="my-5 w-full flex justify-center">
-    <div class="grid grid-cols-3 gap-8">
-      {
-        releaseServices.map((service) => (
-          <ServiceIconLink
-            serviceName={service.name}
-            serviceIconPath={service.icon}
-            serviceUrl={service.url}
-          />
-        ))
-      }
+    <h3 class="text-lg font-mono font-bold text-yellow-400">Streaming</h3>
+    <p class="text-sm font-sans italic">
+        Stream <span class="bold">{release.title}</span> on these and other fine services:
+    </p>
+    <div class="my-5 w-full flex justify-center">
+        <div class="grid grid-cols-3 gap-8">
+            {releaseServices.map((service) => (
+                <ServiceIconLink
+                    serviceName={service.name}
+                    iconName={service.icon}
+                    serviceUrl={service.url}
+                    size={50}
+                />
+            ))}
+        </div>
     </div>
-  </div>
+</div>
