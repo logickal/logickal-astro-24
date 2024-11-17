@@ -16,7 +16,7 @@ let services = ServicesData.filter(service => service.type == 'music');
         services.map((service) => (
           <ServiceIconLink
             serviceName={service.name}
-            serviceIconPath={service.icon}
+            iconName={service.icon}
             serviceUrl={service.url}
             size={50}
           />

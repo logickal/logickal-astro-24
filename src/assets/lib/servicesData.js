@@ -1,14 +1,14 @@
 let ServicesData = [
     {
       name: "Bandcamp",
-      icon: "icons8-bandcamp.svg",
+      icon: "simple-icons:bandcamp",
       url: "https://logickal.bandcamp.com",
       type: 'music',
       dataName: 'bandcamp'
     },
     {
       name: "Apple Music",
-      icon: "icons8-apple-music.svg",
+      icon: "simple-icons:applemusic",
       url: "https://music.apple.com/us/artist/logickal/156855379",
       type: 'music',
       dataName: 'appleMusic'
@@ -16,7 +16,7 @@ let ServicesData = [
     },
     {
       name: "Spotify",
-      icon: "icons8-spotify.svg",
+      icon: "simple-icons:spotify",
       url: "https://open.spotify.com/artist/6Mvi6AM1TSZGr0vWqV6GNM?si=t_UaaeHNR_6I-OgxuT1yyw",
       type: 'music',
       dataName: 'spotify'
@@ -24,7 +24,7 @@ let ServicesData = [
     },
     {
       name: "Amazon Music",
-      icon: "icons8-amazon-music.svg",
+      icon: "simple-icons:amazonmusic",
       url: "https://amazon.com/music/player/artists/B000RSE9GG/logickal?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_jyGEzdmqx4DYnTe0BrjfcYVlj",
       type: 'music',
       dataName: 'amazonMusic'
@@ -32,7 +32,7 @@ let ServicesData = [
     },
     {
       name: "YouTube Music",
-      icon: "icons8-youtube-music.svg",
+      icon: "simple-icons:youtubemusic",
       url: "https://music.youtube.com/channel/UCtewbGbrBYnVVfyQcn89GeQ?si=JaejM18j-DzRTTYk",
       type: 'music',
       dataName: 'youtubeMusic'
@@ -40,7 +40,7 @@ let ServicesData = [
     },
     {
       name: "Tidal",
-      icon: "icons8-tidal.svg",
+      icon: "simple-icons:tidal",
       url: "https://www.tidal.com",
       type: 'music',
       dataName: 'tidal'
@@ -48,46 +48,54 @@ let ServicesData = [
     },
     {
       name: "Soundcloud",
-      icon: "icons8-soundcloud.svg",
+      icon: "simple-icons:soundcloud",
       url: "https://www.soundcloud.com",
       type: 'music',
       dataName: 'soundcloud'
 
     },
-    {
-        name: "Facebook",
-        icon: "icons8-facebook-23.svg",
-        url: "https://www.facebook.com/logickalmusick",
-        type: 'social',
-        dataName: 'facebook'
-    },
+
     {
         name: "Instagram",
-        icon: "icons8-instagram-23.svg",
+        icon: "simple-icons:instagram",
         url: "https://www.instagram.com/logickal",
         type: 'social',
         dataName: 'instagram'
     },
     {
+        name: "Bluesky",
+        icon: "simple-icons:bluesky",
+        url: "https://bsky.app/profile/logickal.bsky.social",
+        type: 'social',
+        dataName: 'bluesky'
+    },
+    {
         name: 'Mastodon',
-        icon: 'icons8-mastodon-23.svg',
+        icon: 'simple-icons:mastodon',
         url: 'https://ravenation.club/@logickal',
         type: 'social',
         dataName: 'mastodon'
     }, 
     {
         name: "YouTube",
-        icon: "icons8-youtube-23.svg",
+        icon: "simple-icons:youtube",
         url: "https://www.youtube.com/@logickalmusick",
         type: 'social',
         dataName: 'youtube'
     },
     {
         name: "Twitch",
-        icon: "icons8-twitch-23.svg",
+        icon: "simple-icons:twitch",
         url: "https://www.twitch.tv/logickal_musick",
         type: 'social',
         dataName: 'twitch'
+    },
+    {
+        name: "Facebook",
+        icon: "simple-icons:facebook",
+        url: "https://www.facebook.com/logickalmusick",
+        type: 'social',
+        dataName: 'facebook'
     }
   ];
   

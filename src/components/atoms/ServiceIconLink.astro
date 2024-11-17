@@ -1,19 +1,21 @@
 ---
-import { Image } from "astro:assets";
-import Debug from "astro/debug";
-
-const icons = import.meta.glob("../../assets/icons/*");
-let iconPath = '../../assets/icons/';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
     serviceName: string;
-    serviceIconPath: string;
+    iconName: string;
     serviceUrl: string;
-    size: number;
+    size?: number;
 }
-const { serviceName, serviceIconPath, serviceUrl,size=50 } = Astro.props;
+
+const { serviceName, iconName, serviceUrl, size = 50 } = Astro.props;
 ---
 
-<a href={ serviceUrl }>
-    <Image src={ icons[iconPath + serviceIconPath]() }  alt={serviceName} width={size} class="object-cover" />
+<a href={serviceUrl} class="inline-block">
+    <Icon 
+        name={iconName} 
+        class="text-gray-300 hover:text-blue-400 transition-colors" 
+        size={size} 
+        aria-label={serviceName}
+    />
 </a>

@@ -10,6 +10,9 @@ import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 
 
+import icon from 'astro-icon';
+
+
 function excelDateToJSDate(serial) {
 
   if (typeof serial === 'object') {
@@ -52,7 +55,13 @@ const sanityConf = {
 // https://astro.build/config
 export default defineConfig({
   site: 'https://logickalmusic.com',
-  integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown(), sitemap()],
+  integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
+    {
+      include: {
+        "simple-icons": ["applemusic", "spotify", "bandcamp", "amazonmusic", "youtubemusic", "tidal", "soundcloud", "facebook", "instagram", "mastodon", "youtube", "twitch", "bluesky"]
+      }
+    }
+  )],
   vite: {
     assetsInclude: ['**/*.numbers', '**/*.xlsx', '**/*.xls', '**/*.xlsb'],
 
