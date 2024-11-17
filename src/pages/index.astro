@@ -45,7 +45,6 @@ const latestRelease = discographyData[0];
   import { useIntersectionObserver } from "../assets/lib/intersectionObserver";
 
   function handleIntersection(element) {
-    console.log("Element is intersecting", element);
     element.classList.remove("opacity-0");
     element.classList.add("animate-fade");
   }
