@@ -2,11 +2,12 @@
 title: 'Equipment'
 ---
 ### Software / DAW
-* Ableton Live 
-* Max For Live
+* Ableton Live / Max For Live
 * Logic Pro
+
 ### Audio Interfaces
 * MOTU 828ES
+
 ### Hardware Instruments / Synthesizers
 * Elektron Octatrack Mk II
 * Elektron Digitone
@@ -14,7 +15,12 @@ title: 'Equipment'
 * Behringer Pro-1
 * Behringer TD-3
 * Behringer RD-6
+
+### Hardware Effects Units
+* Eventide H9
+
 ### Control Surfaces / Sequencers
+* Ableton Push 2
 * Torso T-1
 * Arturia Keystep Pro
 
