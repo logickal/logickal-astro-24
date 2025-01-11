@@ -6,6 +6,7 @@ import LatestRelease from "../components/LatestRelease.astro";
 import HomeTitle from "../components/HomeTitle.astro";
 import HomeNav from "../components/HomeNav.astro";
 import AMAmember from "../components/AMAmember.astro";
+import HomePageVideo from "../components/HomePageVideo.astro";
 
 const images = import.meta.glob("../assets/imgBg/*");
 
@@ -23,6 +24,11 @@ const latestRelease = discographyData[0];
       >
         <LatestRelease latestRelease={latestRelease} />
       </div>
+      <div
+      class="opacity-0 animate-duration-[1500ms] animate-ease-linear intersect-full"
+    >
+      <HomePageVideo />
+    </div>
       <div
         class="opacity-0 animate-duration-[1500ms] animate-ease-linear intersect-full"
       >
