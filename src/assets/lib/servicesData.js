@@ -1,3 +1,5 @@
+import { url } from "inspector";
+
 let ServicesData = [
     {
       name: "Bandcamp",
@@ -54,7 +56,13 @@ let ServicesData = [
       dataName: 'soundcloud'
 
     },
-
+    {
+      name: "Patreon",
+      icon: "simple-icons:patreon",
+      url: "https://www.patreon.com/logickalmusick",
+      type: 'social',
+      dataName: 'patreon'
+    },
     {
         name: "Instagram",
         icon: "simple-icons:instagram",

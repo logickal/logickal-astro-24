@@ -78,7 +78,7 @@ export default defineConfig({
   integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
     {
       include: {
-        "simple-icons": ["applemusic", "spotify", "bandcamp", "amazonmusic", "youtubemusic", "tidal", "soundcloud", "facebook", "instagram", "mastodon", "youtube", "twitch", "bluesky"]
+        "simple-icons": ["applemusic", "spotify", "bandcamp", "amazonmusic", "youtubemusic", "tidal", "soundcloud", "facebook", "instagram", "mastodon", "youtube", "twitch", "bluesky", "patreon"]
       }
     }
   )],
