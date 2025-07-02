@@ -6,8 +6,11 @@ interface Props {
     slug: string;
 }
 
-let { title, slug } = Astro.props;
+const { title, slug } = Astro.props;
 
 ---
 
-<a href=`/jrnl/category/${slug}`><CategoryText title={title}/></a>
+<a href={`/jrnl/category/${slug}`}>
+  <CategoryText title={title} />
+</a>
+
