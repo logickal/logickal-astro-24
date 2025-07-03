@@ -38,7 +38,7 @@ function excelDateToJSDate(serial) {
 }
 
 const faviconsConfig = {
-  masterPicture: "./src/assets/static-images/logickal-icon.png",
+  input: "./src/assets/static-images/logickal-icon.png",
   emitAssets: true,
   faviconsDarkMode: true,
 
