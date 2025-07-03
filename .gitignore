@@ -36,3 +36,5 @@ public/apple*
 public/safari*
 public/mstile*
 public/yandex*
+
+.netlify/

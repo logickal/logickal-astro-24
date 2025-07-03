@@ -22,7 +22,6 @@
     "astro": "^4.16.14",
     "astro-capo": "^0.0.1",
     "astro-embed": "^0.7.4",
-    "astro-favicon": "^0.1.0",
     "astro-favicons": "^2.1.7",
     "astro-icon": "^1.1.2",
     "astro-seo-metadata": "^0.6.0",
