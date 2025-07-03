@@ -1,6 +1,5 @@
 import { readFileSync } from 'fs';
 import { defineConfig } from 'astro/config';
-import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 import tailwind from "@astrojs/tailwind";
 import * as XLSX from 'xlsx';
@@ -45,12 +44,6 @@ const faviconsConfig = {
 
 }
 
-const sanityConf = {
-  projectId: 'zbrphau8',
-  dataset: 'production',
-  useCdn: false,
-  studioBasePath: '/admin',
-};
 
 // https://astro.build/config
 export default defineConfig({
@@ -62,20 +55,11 @@ export default defineConfig({
         manualChunks: {
           'icons': ['@iconify-json/simple-icons'],
           'react': ['react', 'react-dom'],
-          'sanity-core': ['@sanity/client'],
-          'sanity-studio': [
-            '@sanity/vision',
-            '@sanity/visual-editing',
-            '@sanity/studio-hints',
-            '@sanity/types',
-            '@sanity/util',
-            '@sanity/validation'
-          ]
         }
       }
     }
   },
-  integrations: [tailwind(), mdx(), sanity(sanityConf), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
+  integrations: [tailwind(), mdx(), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
     {
       include: {
         "simple-icons": ["applemusic", "spotify", "bandcamp", "amazonmusic", "youtubemusic", "tidal", "soundcloud", "facebook", "instagram", "mastodon", "youtube", "twitch", "bluesky", "patreon"]
