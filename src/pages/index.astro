@@ -54,10 +54,10 @@ const latestRelease = discographyData[0];
   </div>
 </Layout>
 
-<script>
+<script lang="ts">
   import { useIntersectionObserver } from "../assets/lib/intersectionObserver";
 
-  function handleIntersection(element) {
+  function handleIntersection(element: Element) {
     element.classList.remove("opacity-0");
     element.classList.add("animate-fade");
   }
@@ -65,8 +65,8 @@ const latestRelease = discographyData[0];
   function intersectionListener() {
     const elements = document.querySelectorAll(".intersect-full");
     elements.forEach((element) => {
-      useIntersectionObserver(element, handleIntersection, {
-        threshold: 0.1, // Adjust this value as needed
+      useIntersectionObserver(element as Element, handleIntersection, {
+        threshold: 0.1,
       });
     });
   }

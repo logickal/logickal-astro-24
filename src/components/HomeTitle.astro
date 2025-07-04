@@ -12,15 +12,15 @@
   </div>
 </div>
 
-<script>
+<script lang="ts">
   
   function animationEventListener() {
-    const img = document.getElementById('parallax-bg');
-    const hero = document.getElementById('home-title');
-    const title = document.getElementById('title');
-    const subtitle = document.getElementById('subtitle');
+    const img = document.getElementById('parallax-bg') as HTMLImageElement | null;
+    const hero = document.getElementById('home-title') as HTMLElement | null;
+    const title = document.getElementById('title') as HTMLElement | null;
+    const subtitle = document.getElementById('subtitle') as HTMLElement | null;
     
-    function addRemoveClasses(item, addClasses) {
+    function addRemoveClasses(item: HTMLElement | null, addClasses: string[]) {
       item.classList.add(...addClasses);
       item.classList.remove('opacity-0');
     }
@@ -31,9 +31,9 @@
       addRemoveClasses(subtitle, ['animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[3500ms]', 'animate-ease-linear']);
     }
 
-    if (img.complete) {
+    if (img && img.complete) {
       addAnimationClasses();
-    } else {
+    } else if (img) {
       img.addEventListener('load', addAnimationClasses);
     }
   }
