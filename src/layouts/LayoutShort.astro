@@ -13,10 +13,8 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<script lang="ts">
-  import SimpleParallax from "simple-parallax-js/vanilla";
-  const image = document.getElementsByClassName("parallax-img");
-  new SimpleParallax(image as any, { scale: 3 });
+<script type="module">
+  import "../scripts/layoutShortParallax.ts";
 </script>
 
 <html lang="en" class="text-gray-400">
