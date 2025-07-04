@@ -9,36 +9,7 @@
   <div class="bg-black h-3/5 py-8">
     <h1 class="text-4xl font-mono opacity-0 mb-5" id="title">logickal</h1>
     <h3 class="text-xl font-sans opacity-0 font-thin" id="subtitle">esoteric electronic musick</h3>
-  </div>
+</div>
 </div>
 
-<script>
-  
-  function animationEventListener() {
-    const img = document.getElementById('parallax-bg');
-    const hero = document.getElementById('home-title');
-    const title = document.getElementById('title');
-    const subtitle = document.getElementById('subtitle');
-    
-    function addRemoveClasses(item, addClasses) {
-      item.classList.add(...addClasses);
-      item.classList.remove('opacity-0');
-    }
-
-    function addAnimationClasses() {
-      addRemoveClasses(hero, ['animate-fade', 'animate-duration-[5000ms]', 'animate-ease-linear']);
-      addRemoveClasses(title, ['animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[1500ms]', 'animate-ease-linear']);
-      addRemoveClasses(subtitle, ['animate-fade', 'animate-duration-[5000ms]', 'animate-delay-[3500ms]', 'animate-ease-linear']);
-    }
-
-    if (img.complete) {
-      addAnimationClasses();
-    } else {
-      img.addEventListener('load', addAnimationClasses);
-    }
-  }
-  
-  document.addEventListener('DOMContentLoaded', animationEventListener);
-  document.addEventListener('astro:after-swap', animationEventListener);
-
-  </script>
+<script type="module" src="/scripts/homeTitle.js"></script>
