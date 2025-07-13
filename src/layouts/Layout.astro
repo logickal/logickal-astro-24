@@ -13,21 +13,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<script>
-  import SimpleParallax from "simple-parallax-js/vanilla";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMContentLoaded");
-    var image = document.getElementsByClassName("parallax-img");
-    new SimpleParallax(image, { scale: 1.8 });
-  });
-
-  document.addEventListener("astro:after-swap", () => {
-    console.log("astro:after-swap");
-    var image = document.getElementsByClassName("parallax-img");
-    new SimpleParallax(image, { scale: 1.8 });
-  });
-</script>
+<script type="module" src="/scripts/layoutParallax.js"></script>
 
 <html lang="en" class="text-gray-400">
   <Head>
