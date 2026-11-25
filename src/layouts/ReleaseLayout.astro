@@ -8,6 +8,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import "../styles/global.css";
 ---
 
 <!doctype html>
@@ -22,7 +23,7 @@ const { title } = Astro.props;
       image="https://logickalmusic.com/og-splash-image.jpg"
     />
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <ViewTransitions />
     <!-- Google tag (gtag.js) -->
     <script
@@ -35,12 +36,12 @@ const { title } = Astro.props;
       }
       gtag("js", new Date());
 
-	  gtag("consent", "default", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "denied",
-  });
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
       gtag("config", "G-VVDT5TLECR");
     </script>
   </Head>

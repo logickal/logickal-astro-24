@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import * as XLSX from 'xlsx';
 import mdx from "@astrojs/mdx";
 import favicons from "astro-favicons";
@@ -17,7 +17,7 @@ function excelDateToJSDate(serial) {
   if (typeof serial === 'object') {
     return new Date(serial);
   }
-  
+
   const utc_days = Math.floor(serial - 25569);
   const utc_value = utc_days * 86400;
   const date_info = new Date(utc_value * 1000);
@@ -59,7 +59,7 @@ export default defineConfig({
       }
     }
   },
-  integrations: [tailwind(), mdx(), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
+  integrations: [mdx(), react(), favicons(faviconsConfig), partytown(), sitemap(), icon(
     {
       include: {
         "simple-icons": ["applemusic", "spotify", "bandcamp", "amazonmusic", "youtubemusic", "tidal", "soundcloud", "facebook", "instagram", "mastodon", "youtube", "twitch", "bluesky", "patreon"]
@@ -70,6 +70,7 @@ export default defineConfig({
     assetsInclude: ['**/*.numbers', '**/*.xlsx', '**/*.xls', '**/*.xlsb'],
 
     plugins: [
+      tailwindcss(),
       {
         name: 'sheet-parser',
         transform(code, id) {
@@ -88,7 +89,7 @@ export default defineConfig({
             return `export default ${JSON.stringify(sheetData)}`;
           }
 
-      }
+        }
       }
     ]
   }
